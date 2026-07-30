@@ -25,7 +25,7 @@ body { background-color: #f4f6f9; color: #1a1a1a; overflow-x: hidden; }
 .search-btn { background: #e53e3e; color: white; border: none; padding: 0 22px; cursor: pointer; font-size: 15px; transition: background 0.2s; }
 .search-btn:hover { background: #111111; }
 
-/* Cụm công cụ bên phải */
+/* Cụm công cụ bên phải điều hướng */
 .nav-right { display: flex; align-items: center; gap: 25px; }
 .btn-upload { background: #111111; color: white; border: none; padding: 11px 20px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
 .btn-upload:hover { background: #e53e3e; }
@@ -43,7 +43,7 @@ body { background-color: #f4f6f9; color: #1a1a1a; overflow-x: hidden; }
 .suggestion-item:hover { background-color: #fff5f5; color: #e53e3e; }
 
 /* ==========================================================================
-   4. HERO BANNER SÔI ĐỘNG & DROPDOWN MỤC CHỐNG ẨN CHUỘT
+   4. HERO BANNER SÔI ĐỘNG & DROPDOWN MỤC CHỐNG ẨN CHUỘT KHI DI CHUỘT
    ========================================================================== */
 .hero { background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://unsplash.com') center/cover no-repeat; text-align: center; padding: 95px 20px; color: white; border-bottom: 4px solid #e53e3e; }
 .hero h2 { font-size: 40px; margin-bottom: 15px; font-weight: 800; }
@@ -73,7 +73,7 @@ body { background-color: #f4f6f9; color: #1a1a1a; overflow-x: hidden; }
 .btn-go-room { background: #ffffff; color: #111111; border: none; padding: 12px 35px; font-size: 14px; font-weight: 700; border-radius: 25px; cursor: pointer; }
 .btn-go-room:hover { background: #e53e3e; color: #ffffff; }
 /* ==========================================================================
-   5. THÈ CARD SẢN PHẨM PHONG CÁCH CARD CHUYÊN NGHIỆP & CỤM ALBUM LƯỚT ẢNH CON
+   5. THẺ SẢN PHẨM PHONG CÁCH CARD CHUYÊN NGHIỆP & CỤM ALBUM LƯỚT ẢNH CON [INDEX]
    ========================================================================== */
 .category-section { margin-bottom: 45px; }
 .section-title { font-size: 24px; font-weight: 800; margin-bottom: 25px; color: #111111; display: flex; align-items: center; gap: 10px; border-left: 5px solid #e53e3e; padding-left: 12px; }
@@ -85,7 +85,7 @@ body { background-color: #f4f6f9; color: #1a1a1a; overflow-x: hidden; }
 .product-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: #111111; }
 .price { font-size: 18px; font-weight: 800; color: #e53e3e; margin-bottom: 15px; }
 
-/* Hiệu ứng di chuột album lướt đa ảnh thu nhỏ chuẩn thương mại, khi hover/click bo đỏ viền [INDEX] */
+/* Hiệu ứng bo viền đỏ rực rỡ khi chạm hoặc di chuột vào ảnh con [INDEX] */
 .detail-thumb-item { transition: all 0.2s ease; }
 .detail-thumb-item:hover { border-color: #e53e3e !important; transform: scale(1.06); }
 #detailThumbsRow::-webkit-scrollbar { height: 4px; }
@@ -164,28 +164,35 @@ body { background-color: #f4f6f9; color: #1a1a1a; overflow-x: hidden; }
 .chat-status-dot { width: 8px; height: 8px; background-color: #e53e3e; border-radius: 50%; }
 
 /* ==========================================================================
-   8. ĐOẠN CSS TỐI ƯU GIAO DIỆN HIỂN THỊ MƯỢT MÀ TRÊN ĐIỆN THOẠI (RESPONSIVE) [INDEX]
+   8. ĐOẠN CSS TỐI ƯU TOÀN DIỆN CHO DI ĐỘNG: GIỮ NGUYÊN 100% CÁC CHỨC NĂNG CHUẨN ĐẸP [INDEX]
    ========================================================================== */
 @media (max-width: 768px) {
-    .navbar { flex-direction: column; gap: 12px; padding: 15px 20px; }
-    .nav-search-block { width: 100%; max-width: 100%; margin: 5px 0; }
-    .nav-right { width: 100%; justify-content: space-between; gap: 15px; }
-    .user-profile-block { align-items: flex-start; }
-    .hero h2 { font-size: 26px; }
-    .hero p { font-size: 13px; }
-    .container { padding: 20px 15px; }
+    /* Đảm bảo thanh Navbar xếp dọc nhưng KHÔNG hề ẩn nút Đăng tin hay Tài khoản [INDEX] */
+    .navbar { flex-direction: column; gap: 14px; padding: 15px !important; width: 100%; }
+    .nav-left-block { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
+    .nav-search-block { width: 100%; max-width: 100%; margin: 2px 0; }
+    .nav-right { width: 100%; justify-content: space-between; gap: 10px; border-top: 1px dashed #edf2f7; padding-top: 10px; }
     
-    /* Ép lưới sản phẩm tự co giãn chia làm 2 cột tăm tắp mượt mà giống Shopee Mobile [INDEX] */
-    .product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
-    .product-img { height: 160px; }
-    .product-info { padding: 10px; }
-    .product-info h3 { font-size: 13px; margin-bottom: 6px; }
-    .price { font-size: 14px; margin-bottom: 10px; }
-    .card-actions { flex-direction: column; gap: 6px; }
-    .btn-buy, .btn-trade-action { padding: 8px; font-size: 11px; width: 100%; }
+    .hero { padding: 50px 15px; }
+    .hero h2 { font-size: 24px; }
+    .hero p { font-size: 12px; }
+    .container { padding: 25px 12px; }
     
-    .chat-box-modal { width: 95% !important; height: 80% !important; bottom: 2.5%; right: 2.5%; }
-    .chat-sidebar { width: 75px; }
-    .chat-user-item strong { font-size: 11px; }
+    /* Lưới sản phẩm co giãn chia thành 2 cột lộng lẫy chuẩn Shopee Mobile [INDEX] */
+    .product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+    .product-img { height: 150px; }
+    .product-info { padding: 8px; }
+    .product-info h3 { font-size: 12px; margin-bottom: 5px; }
+    .price { font-size: 13px; margin-bottom: 8px; }
+    .card-actions { flex-direction: column; gap: 5px; }
+    .btn-buy, .btn-trade-action { padding: 7px; font-size: 11px; width: 100%; }
+    
+    /* Đồng bộ khung xem album ảnh lướt, hộp gõ mô tả và khung chat đôi vẹn toàn trên điện thoại [INDEX] */
+    .modal-content { width: 95% !important; padding: 20px !important; border-radius: 16px; }
+    #detailMainImg { height: 200px !important; }
+    .chat-box-modal { width: 96% !important; height: 85% !important; bottom: 2%; right: 2%; border-radius: 12px; }
+    .chat-sidebar { width: 65px; }
+    .chat-user-item { padding: 8px 4px; }
+    .chat-user-item strong { font-size: 10px; word-break: break-all; }
     .chat-user-item p { display: none; }
 }

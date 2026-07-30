@@ -2,10 +2,10 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <!-- Cấu hình Viewport bắt buộc để dứt điểm hoàn toàn lỗi tràn lề trên điện thoại -->
+    <!-- Cấu hình bắt buộc giúp giao diện di động tự co giãn khít mọi màn hình điện thoại, dứt điểm tràn lề -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HLTRADE - Sàn Trao Đổi Sinh Viên Hòa Lạc</title>
-    <!-- Nhúng thư viện icon Font Awesome chuẩn chính tả tuyệt đối -->
+    <!-- Nhúng bộ thư viện icon chuẩn chính tả 100% để hiển thị đầy đủ icon trên di động -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -29,11 +29,11 @@
                     <a href="javascript:void(0)" onclick="showCategory('books')"><i class="fa-solid fa-book"></i> Sách & Truyện</a>
                     <a href="javascript:void(0)" onclick="showCategory('cosmetics')"><i class="fa-solid fa-wand-magic-sparkles"></i> Mỹ phẩm</a>
                     <a href="javascript:void(0)" onclick="showCategory('appliances')"><i class="fa-solid fa-couch"></i> Đồ gia dụng</a>
-                    <a href="javascript:void(0)" onclick="showCategory('digital')"><i class="fa-solid fa-gamepad"></i> Kỹ thuật số</a>
+                    <a href="javascript:void(0)" onclick="showCategory('digital')"><i class="fa-solid fa-gamepad"></i> Hàng số</a>
                 </div>
             </div>
         </div>
-        <!-- Thanh tìm kiếm quét toàn sàn và hộp thả đề xuất chữ nhỏ Shopee -->
+        <!-- Thanh tìm kiếm quét toàn sàn và hộp gợi ý chữ nhỏ đổ xuống kiểu Shopee -->
         <div class="nav-search-block" style="position: relative;">
             <form class="search-form" onsubmit="event.preventDefault(); handleNavbarSearch();">
                 <input type="text" id="navbarSearchInput" placeholder="Tìm giáo trình, đồ kí túc xá..." class="search-input" oninput="showSearchSuggestions(this.value)" autocomplete="off">
@@ -85,29 +85,24 @@
                 </div>
             </div>
         </section>
-        <!-- CÁC TRANG DANH MỤC SẢN PHẨM MẪU -->
-        <section id="fashion" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-shirt"></i> Quần áo</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Áo Khoác Blazer Minimalist', '850.000', 'Áo blazer phong cách Hàn Quốc, chất vải dày dặn lịch sự, thích hợp mặc đi học đi sự kiện.', 'https://unsplash.com', 'fashion')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Áo Khoác Blazer Minimalist', '850.000', 'Áo blazer phong cách Hàn Quốc, chất vải dày dặn lịch sự, thích hợp mặc đi học đi sự kiện.', 'https://unsplash.com', 'fashion')" style="cursor:pointer;">Áo Khoác Blazer Minimalist</h3><p class="price">850.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Áo Khoác Blazer', '850.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="electronics" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-laptop"></i> Điện tử</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Tai Nghe Over-Ear ANC Ultra', '3.200.000', 'Tai nghe chống ồn chủ động cao cấp, bass cực ấm, pin trâu dùng liên tục 30 tiếng.', 'https://unsplash.com', 'electronics')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Tai Nghe Over-Ear ANC Ultra', '3.200.000', 'Tai nghe chống ồn chống chủ động cao cấp, bass cực ấm, pin trâu dùng liên tục 30 tiếng.', 'https://unsplash.com', 'electronics')" style="cursor:pointer;">Tai Nghe Over-Ear ANC Ultra</h3><p class="price">3.200.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Tai Nghe ANC', '3.200.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="food" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-utensils"></i> Đồ ăn</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Hộp Salad Ức Gà Sốt Mè Rang', '75.000', 'Salad rau mầm tươi xanh kèm ức gà áp chảo ăn kiêng siêu ngon cho dân tập gym.', 'https://unsplash.com', 'food')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Hộp Salad Ức Gà Sốt Mè Rang', '75.000', 'Salad rau mầm tươi xanh kèm ức gà áp chảo ăn kiêng siêu ngon cho dân tập gym.', 'https://unsplash.com', 'food')" style="cursor:pointer;">Hộp Salad Ức Gà Sốt Mè Rang</h3><p class="price">75.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Hộp Salad Ức Gà', '75.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button></div></div></div></div></section>
-        <section id="vehicles" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-motorcycle"></i> Xe cộ</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Xe Máy Điện EV-1', '45.000.000', 'Xe chạy lướt 2000km mới tinh, phanh đĩa ABS an toàn, thích hợp vi vu quanh Hòa Lạc.', 'https://unsplash.com', 'vehicles')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Xe Máy Điện EV-1', '45.000.000', 'Xe chạy lướt 2000km mới tinh, phanh đĩa ABS an toàn, thích hợp vi vu quanh Hòa Lạc.', 'https://unsplash.com', 'vehicles')" style="cursor:pointer;">Xe Máy Điện Thông Minh EV-1</h3><p class="price">45.000.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Xe Máy Điện EV-1', '45.000.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="realestate" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-house"></i> Bất động sản</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="showCategory('realestate')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><h3 onclick="showCategory('realestate')" style="cursor:pointer;">Căn Hộ Studio Căn Góc View Hồ</h3><p class="price">1.850.000.000 đ</p><div class="card-actions"><button class="btn-buy" style="width:100%" onclick="alert('Đã gửi thông tin kết nối!')">Liên hệ xem phòng</button></div></div></div></div></section>
-        <section id="sports" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Thể thao</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Bộ Tạ Tay Cao Cấp 20kg', '650.000', 'Gồm các bánh tạ tháo lắp linh hoạt, cốt thép bọc cao su chống trầy xước sàn kí túc xá.', 'https://unsplash.com', 'sports')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Bộ Tạ Tay Cao Cấp 20kg', '650.000', 'Gồm các bánh tạ tháo lắp linh hoạt, cốt thép bọc cao su chống trầy xước sàn kí túc xá.', 'https://unsplash.com', 'sports')" style="cursor:pointer;">Bộ Tạ Tay Cao Cấp 20kg</h3><p class="price">650.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Bộ Tạ Tay 20kg', '650.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="pets" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-paw"></i> Thú cưng</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Chú Chó Corgi Thuần Chủng', '5.500.000', 'Chó Corgi chân ngắn siêu đáng yêu, đã tiêm phòng đầy đủ, cần tìm chủ mới yêu thương.', 'https://unsplash.com', 'pets')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Chú Chó Corgi Thuần Chủng', '5.500.000', 'Chó Corgi chân ngắn siêu đáng yêu, đã tiêm phòng đầy đủ, cần tìm chủ mới yêu thương.', 'https://unsplash.com', 'pets')" style="cursor:pointer;">Chú Chó Corgi Thuần Chủng</h3><p class="price">5.500.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Chú Chó Corgi', '5.500.000')"><i class="fa-solid fa-paw"></i> Nhận nuôi</button></div></div></div></div></section>
-        <section id="baby" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-baby"></i> Mẹ & Bé</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Xe Đẩy Trẻ Em Gấp Gọn', '1.200.000', 'Xe đẩy em bé siêu nhẹ, gấp gọn dễ dàng bỏ cốp ô tô, còn mới 95%.', 'https://unsplash.com', 'baby')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Xe Đẩy Trẻ Em Gấp Gọn', '1.200.000', 'Xe đẩy em bé siêu nhẹ, gấp gọn dễ dàng bỏ cốp ô tô, còn mới 95%.', 'https://unsplash.com', 'baby')" style="cursor:pointer;">Xe Đẩy Trẻ Em Gấp Gọn</h3><p class="price">1.200.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Xe Đẩy Trẻ Em', '1.200.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="books" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-book"></i> Sách & Truyện</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Trọn Bộ Sách Hạt Giống Tâm Hồn', '250.000', 'Gồm 5 cuốn sách truyền cảm hứng, sách giữ gìn cẩn thận không rách nát.', 'https://unsplash.com', 'books')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Trọn Bộ Sách Hạt Giống Tâm Hồn', '250.000', 'Gồm 5 cuốn sách truyền cảm hứng, sách giữ gìn cẩn thận không rách nát.', 'https://unsplash.com', 'books')" style="cursor:pointer;">Trọn Bộ Sách Hạt Giống Tâm Hồn</h3><p class="price">250.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Bộ Sách Hạt Giống', '250.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="cosmetics" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Mỹ phẩm</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Bộ Kem Dưỡng Ẩm Nhật Bản', '450.000', 'Cấp ẩm sâu cho da mùa hanh khô, hàng chính hãng xách tay nguyên seal.', 'https://unsplash.com', 'cosmetics')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Bộ Kem Dưỡng Ẩm Nhật Bản', '450.000', 'Cấp ẩm sâu cho da mùa hanh khô, hàng chính hãng xách tay nguyên seal.', 'https://unsplash.com', 'cosmetics')" style="cursor:pointer;">Bộ Kem Dưỡng Ẩm Nhật Bản</h3><p class="price">450.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Bộ Kem Dưỡng Ẩm', '450.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button></div></div></div></div></section>
-        <section id="appliances" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-couch"></i> Đồ gia dụng</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Ghế Sofa Bọc Da Phòng Khách', '4.500.000', 'Sofa da công nghiệp cao cấp, đệm mút êm ái đàn hồi tốt, không bong tróc.', 'https://unsplash.com', 'appliances')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Ghế Sofa Bọc Da Phòng Khách', '4.500.000', 'Sofa da công nghiệp cao cấp, đệm mút êm ái đàn hồi tốt, không bong tróc.', 'https://unsplash.com', 'appliances')" style="cursor:pointer;">Ghế Sofa Bọc Da Phòng Khách</h3><p class="price">4.500.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Ghế Sofa', '4.500.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
-        <section id="digital" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Hàng kỹ thuật số</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Tài Khoản Steam Có 20+ Game', '1.500.000', 'Tài khoản chính chủ sạch, nhiều tựa game bom tấn AAA hành động nhập vai thịnh hành.', 'https://unsplash.com', 'digital')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Tài Khoản Steam Có 20+ Game', '1.500.000', 'Tài khoản chính chủ sạch, nhiều tựa game bom tấn AAA hành động nhập vai thịnh hành.', 'https://unsplash.com', 'digital')" style="cursor:pointer;">Tài Khoản Steam Có 20+ Game</h3><p class="price">1.500.000 đ</p><div class="card-actions"><button class="btn-buy" style="width:100%" onclick="openCheckoutForm('Tài Khoản Steam', '1.500.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button></div></div></div></div></section>
+        <!-- CÁC TRANG DANH MỤC SẢN PHẨM RỖNG - ĐƯỢC CHÈN DỮ LIỆU TỪ JS SẠCH SẼ CHỐNG TREO BẤN -->
+        <section id="fashion" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-shirt"></i> Quần áo</h2><div class="product-grid" id="grid-fashion"></div></section>
+        <section id="electronics" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-laptop"></i> Điện tử</h2><div class="product-grid" id="grid-electronics"></div></section>
+        <section id="food" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-utensils"></i> Đồ ăn</h2><div class="product-grid" id="grid-food"></div></section>
+        <section id="vehicles" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-motorcycle"></i> Xe cộ</h2><div class="product-grid" id="grid-vehicles"></div></section>
+        <section id="realestate" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-house"></i> Bất động sản</h2><div class="product-grid" id="grid-realestate"></div></section>
+        <section id="sports" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Thể thao</h2><div class="product-grid" id="grid-sports"></div></section>
+        <section id="pets" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-paw"></i> Thú cưng</h2><div class="product-grid" id="grid-pets"></div></section>
+        <section id="baby" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-baby"></i> Mẹ & Bé</h2><div class="product-grid" id="grid-baby"></div></section>
+        <section id="books" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-book"></i> Sách & Truyện</h2><div class="product-grid" id="grid-books"></div></section>
+        <section id="cosmetics" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Mỹ phẩm</h2><div class="product-grid" id="grid-cosmetics"></div></section>
+        <section id="appliances" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-couch"></i> Đồ gia dụng</h2><div class="product-grid" id="grid-appliances"></div></section>
+        <section id="digital" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Hàng kỹ thuật số</h2><div class="product-grid" id="grid-digital"></div></section>
         
-        <!-- TRANG PHÒNG TRỌ -->
+        <!-- TRANG PHÒNG TRỌ Ở GHÉP HÒA LẠC -->
         <section id="rooms-page" class="category-section" style="display: none;">
             <div class="section-header-flex"><h2 class="section-title"><i class="fa-solid fa-building-user"></i> Khu Vực Phòng Trọ & Ở Ghép</h2></div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img" onclick="openProductDetail('Phòng Trọ Khép Kín Cạnh Trường (Full Đồ)', '2.500.000', 'Phòng đầy đủ điều hòa, nóng lạnh, giường tủ, ban công thoáng mát, dọn vào ở ngay.', 'https://unsplash.com', 'rooms-page')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div>
-                    <div class="product-info"><h3>Phòng Trọ Khép Kín Cạnh Trường (Full Đồ)</h3><p class="price">2.500.000 đ/tháng</p><div class="card-actions"><button class="btn-buy" style="width: 100%;" onclick="openCheckoutForm('Thuê phòng trọ', '2.500.000')"><i class="fa-solid fa-phone"></i> Đặt Thuê / Liên Hệ</button></div></div>
-                </div>
-            </div>
+            <div class="product-grid" id="grid-rooms-page"></div>
         </section>
     </main>
     <!-- POP-UP CHI TIẾT SẢN PHẨM: ĐA ẢNH & MÔ TẢ NGƯỜI BÁN CHUẨN SHOPEE -->
@@ -247,92 +242,85 @@
             document.getElementById('tab-' + type).classList.add('active'); document.getElementById('form-' + type).style.display = 'block';
         }
 
-        // HÀM XEM CHI TIẾT SẢN PHẨM: Đã được sửa đổi hoàn toàn để kích hoạt hàm đổi ảnh phụ trợ độc lập không dính lỗi nháy
-        function openProductDetail(title, price, desc, imgListStr, catId) {
-            const imgList = imgListStr.split('|||'); 
+        // BỘ NHỚ KHO HÀNG TRỰC TUYẾN TRÁNH TRÀN BỘ NHỚ HTML [INDEX]
+        let globalProductStorage = {};
+
+        // HÀM MỞ CHI TIẾT THEO ID: Gọi trực tiếp từ Database ẩn, dứt điểm lỗi kẹt dấu nháy [INDEX]
+        function openProductDetailById(prodId) {
+            const item = globalProductStorage[prodId];
+            if (!item) return;
             
-            document.getElementById('detailTitle').innerText = title;
-            document.getElementById('detailPrice').innerText = price + " đ";
-            document.getElementById('detailDesc').innerText = desc || "Người bán không để lại mô tả bổ sung cho món đồ này.";
+            document.getElementById('detailTitle').innerText = item.name;
+            document.getElementById('detailPrice').innerText = item.price + " đ";
+            document.getElementById('detailDesc').innerText = item.desc || "Người bán không để lại mô tả.";
             
             const mainImgBox = document.getElementById('detailMainImg');
-            mainImgBox.style.backgroundImage = "url('" + imgList[0] + "')";
+            mainImgBox.style.backgroundImage = "url('" + item.images[0] + "')";
             
-            // GIẢI QUYẾT TRIỆT ĐỂ: Mã hóa ký tự Base64 an toàn bằng encodeURIComponent để không bao giờ bị kẹt dấu nháy đơn/kép của trình duyệt
             const thumbsRow = document.getElementById('detailThumbsRow');
-            thumbsRow.innerHTML = imgList.map(imgData => {
+            thumbsRow.innerHTML = item.images.map((imgData, idx) => {
                 const safeUrl = encodeURIComponent(imgData);
-                return `<div class="detail-thumb-item" onclick="switchDetailImage('${safeUrl}')" style="width: 55px; height: 55px; background-image: url('${imgData}'); background-size: cover; background-position: center; border-radius: 6px; border: 2px solid #edf2f7; cursor: pointer; flex-shrink: 0;"></div>`;
+                return `<div class="detail-thumb-item" onclick="switchDetailImageDirect('${safeUrl}')" style="width: 55px; height: 55px; background-image: url('${imgData}'); background-size: cover; background-position: center; border-radius: 6px; border: 2px solid #edf2f7; cursor: pointer; flex-shrink: 0;"></div>`;
             }).join('');
             
             document.getElementById('detailActionsRow').innerHTML = `
-                <button class="btn-buy" onclick="toggleModal('productDetailModal'); openCheckoutForm('${title}', '${price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button>
+                <button class="btn-buy" onclick="toggleModal('productDetailModal'); openCheckoutForm('${item.name}', '${item.price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button>
                 <button class="btn-trade-action" onclick="toggleModal('productDetailModal'); toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button>
             `;
             toggleModal('productDetailModal');
         }
 
-        // HÀM PHỤ TRỢ GIẢI MÃ: Đọc chính xác chuỗi an toàn để thay đổi ảnh nền đại diện ngay lập tức khi sinh viên click ảnh nhỏ
-        function switchDetailImage(encodedUrl) {
+        function switchDetailImageDirect(encodedUrl) {
             const mainImgBox = document.getElementById('detailMainImg');
-            if (mainImgBox) {
-                mainImgBox.style.backgroundImage = "url('" + decodeURIComponent(encodedUrl) + "')";
-            }
+            if (mainImgBox) mainImgBox.style.backgroundImage = "url('" + decodeURIComponent(encodedUrl) + "')";
         }
-        // HÀM GỢI Ý TOÀN SÀN DYNAMIC: Tự động gom tên đồ mặc định trên HTML + đồ tự đăng ở LocalStorage để gợi ý
         function showSearchSuggestions(val) {
             const box = document.getElementById('searchSuggestionsBox'); if (!box) return;
             const text = val.trim().toLowerCase(); if (text === '') { box.style.display = 'none'; return; }
-            let dynamicItems = [];
+            let suggestions = [];
 
-            // 1. Quét đồ có sẵn từ HTML
-            document.querySelectorAll('.product-card h3').forEach(t => {
-                const sec = t.closest('section');
-                if (sec && !dynamicItems.some(i => i.keyword === t.innerText.toLowerCase())) { dynamicItems.push({ keyword: t.innerText.toLowerCase(), cat: sec.id }); }
+            Object.keys(globalProductStorage).forEach(id => {
+                const item = globalProductStorage[id];
+                if (item.name.toLowerCase().includes(text)) suggestions.push({ keyword: item.name, cat: item.cat });
             });
-            // 2. Quét đồ lưu trong bộ nhớ tự đăng LocalStorage
-            const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
-            uploads.forEach(up => { if (!dynamicItems.some(i => i.keyword === up.name.toLowerCase())) { dynamicItems.push({ keyword: up.name.toLowerCase(), cat: up.cat || 'fashion' }); } });
 
-            const matches = dynamicItems.filter(item => item.keyword.includes(text));
-            if (matches.length === 0) { box.style.display = 'none'; return; }
-
-            box.innerHTML = matches.map(item => `
-                <div class="suggestion-item" onclick="clickSuggestionItem('${item.keyword}', '${item.cat}')"><i class="fa-solid fa-magnifying-glass" style="font-size:11px; margin-right:8px; color:#a0aec0;"></i> ${item.keyword}</div>
+            if (suggestions.length === 0) { box.style.display = 'none'; return; }
+            box.innerHTML = suggestions.map(item => `
+                <div class="suggestion-item" onclick="clickSuggestionItem('${item.keyword.replace(/'/g, "\\'")}', '${item.cat}')"><i class="fa-solid fa-magnifying-glass" style="font-size:11px; margin-right:8px; color:#a0aec0;"></i> ${item.keyword}</div>
             `).join(''); box.style.display = 'block';
         }
 
         function clickSuggestionItem(keyword, catId) {
             document.getElementById('navbarSearchInput').value = keyword; document.getElementById('searchSuggestionsBox').style.display = 'none'; showCategory(catId);
         }
-
         document.addEventListener('click', function(e) {
-            const box = document.getElementById('searchSuggestionsBox'); if (box && e.target.id !== 'navbarSearchInput') { box.style.display = 'none'; }
+            const box = document.getElementById('searchSuggestionsBox'); if (box && e.target.id !== 'navbarSearchInput') box.style.display = 'none';
         });
-        // HÀM TÌM KIẾM TOÀN SÀN SIÊU CẤP: Quét sạch sành sanh từ đồ mặc định đến đồ tự đăng của sinh viên
         function handleNavbarSearch() {
             const inputEl = document.getElementById('navbarSearchInput'); if (!inputEl) return;
             const keyword = inputEl.value.trim().toLowerCase(); if (keyword === '') { alert('Nhập từ khóa!'); return; }
-            let foundMatch = false; let targetCategoryPage = '';
+            let foundCat = '';
 
-            // TẦNG 1: Quét trực tiếp trên các thẻ HTML đang hiển thị ngoài màn hình
-            document.querySelectorAll('.product-card').forEach(card => {
-                const titleEl = card.querySelector('h3');
-                if (titleEl && titleEl.innerText.toLowerCase().includes(keyword)) { foundMatch = true; const sec = card.closest('section'); if (sec) { targetCategoryPage = sec.id; } }
+            Object.keys(globalProductStorage).find(id => {
+                if (globalProductStorage[id].name.toLowerCase().includes(keyword)) {
+                    foundCat = globalProductStorage[id].cat; return true;
+                }
             });
-            // TẦNG 2: Quét sâu trong kho dữ liệu bộ nhớ tự đăng lưu trữ của sinh viên
-            if (!foundMatch) {
-                const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
-                const matchedUpload = uploads.slice().reverse().find(item => item.name.toLowerCase().includes(keyword));
-                if (matchedUpload) { foundMatch = true; targetCategoryPage = matchedUpload.cat || 'fashion'; }
-            }
 
-            if (foundMatch && targetCategoryPage !== '') { alert(`🎉 Tìm thấy món đồ khớp từ khóa trên toàn sàn!`); showCategory(targetCategoryPage); }
-            else { alert(`Không tìm thấy món đồ nào tên "${inputEl.value}" trên sàn HLTRADE.`); }
+            if (foundCat) { alert('🎉 Tìm thấy món đồ khớp từ khóa trên toàn sàn!'); showCategory(foundCat); }
+            else alert(`Không tìm thấy món đồ nào tên "${inputEl.value}" trên sàn HLTRADE.`);
             inputEl.value = '';
         }
         let registeredUsers = JSON.parse(localStorage.getItem('hltrade_users')) || [{ name: "Long Anh", phone: "0375408826", pass: "123456" }];
-        window.onload = function() { updateUserStatus(); renderDashboardData(); renderCartDetailData(); }
+        
+        // CHỐT CHẶN F5: Ép nạp sản phẩm hệ thống trước, rồi nạp khôi phục đồ tự đăng ngay khi vừa nạp trang [INDEX]
+        window.onload = function() { 
+            updateUserStatus(); 
+            renderCartDetailData(); 
+            setupDefaultProductsDatabase(); // Khởi tạo kho đồ hệ thống mặc định [INDEX]
+            reloadUploadedItemsOnFloor(); // Khôi phục sừng sững đồ sinh viên tự đăng không mất khi F5 [INDEX]
+            renderDashboardData(); 
+        }
 
         function updateUserStatus() {
             const currentUser = JSON.parse(localStorage.getItem('hltrade_current_user')), statusText = document.getElementById('user-status'), tabDash = document.getElementById('tab-dashboard'), tabLog = document.getElementById('tab-login'), tabReg = document.getElementById('tab-register'), quickChat = document.getElementById('quickChatBtn');
@@ -353,25 +341,15 @@
         }
         function handlePhoneLogin() {
             const phone = document.getElementById('loginPhone').value, pass = document.getElementById('loginPassword').value, user = registeredUsers.find(u => u.phone === phone && u.pass === pass);
-            if (user) { localStorage.setItem('hltrade_current_user', JSON.stringify(user)); updateUserStatus(); renderDashboardData(); alert(`Chào mừng ${user.name}!`); } else { alert('Sai tài khoản hoặc mật khẩu!'); }
+            if (user) { localStorage.setItem('hltrade_current_user', JSON.stringify(user)); renderDashboardData(); alert(`Chào mừng ${user.name}!`); } else alert('Sai tài khoản hoặc mật khẩu!');
         }
 
-        // HÀM GỠ TIN ĐĂNG: Xóa món đồ khỏi LocalStorage bộ nhớ và bốc hơi khỏi giao diện toàn sàn vĩnh viễn
         function deleteUploadedItem(index, name, catId) {
             if (confirm(`Bạn có chắc chắn muốn xóa tin đăng món đồ "${name}" không?`)) {
                 let uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
                 uploads.splice(index, 1); localStorage.setItem('hltrade_uploaded_items', JSON.stringify(uploads));
-                renderDashboardData();
-                document.querySelectorAll('.product-card').forEach(card => { const titleEl = card.querySelector('h3'); if (titleEl && titleEl.innerText === name) { card.remove(); } });
-                alert(`Đã gỡ bài đăng tin "${name}" thành công!`); if (catId) { showCategory(catId); }
+                alert(`Đã gỡ bài đăng tin "${name}" thành công!`); location.reload(); // Tự động F5 làm sạch bộ đệm
             }
-        }
-        let tempProduct = { name: '', price: '' };
-        function openCheckoutForm(name, price) {
-            tempProduct.name = name; tempProduct.price = price; const submitBtn = document.getElementById('submitCheckoutBtn');
-            if (name.toLowerCase().includes('phòng') || name.toLowerCase().includes('thuê')) { if (submitBtn) submitBtn.innerText = "Xác Nhận Đặt Thuê"; }
-            else { if (submitBtn) submitBtn.innerText = "Xác Nhận Đặt Mua"; }
-            toggleModal('checkoutModal');
         }
         function handleConfirmPurchase() {
             const cartData = JSON.parse(localStorage.getItem('hltrade_cart_items')) || []; cartData.push({ name: tempProduct.name, price: tempProduct.price, note: document.getElementById('buyerNote').value });
@@ -394,49 +372,115 @@
             bodyEl.innerHTML = messages.map(msg => { const bubbleClass = msg.sender === 'me' ? 'user-msg' : 'bot-msg'; if (msg.type === 'image') { return `<div class="msg-bubble ${bubbleClass}" style="background:none; padding:0;"><img src="${msg.text}" style="max-width:100%; max-height:150px; border-radius:10px; display:block; border:1px solid #edf2f7;"></div>`; } return `<div class="msg-bubble ${bubbleClass}">${msg.text}</div>`; }).join(''); bodyEl.scrollTop = bodyEl.scrollHeight;
         }
         function sendUserChatMessage() {
-            const inputEl = document.getElementById('userChatInput'), bodyEl = document.getElementById('chatMessageContent'), text = inputEl.value.trim(); if (text === '') return;
+            const inputEl = document.getElementById('userChatInput'), text = inputEl.value.trim(); if (text === '') return;
             chatDatabase[currentPartner].push({ sender: 'me', type: 'text', text: text }); renderCurrentChatMessages(); inputEl.value = '';
             setTimeout(() => { chatDatabase[currentPartner].push({ sender: 'them', type: 'text', text: "Oki chốt đơn nhé bạn ơi!" }); renderCurrentChatMessages(); }, 1200);
         }
         function sendUserChatImage(input) {
-            const file = input.files; if (!file || file.length === 0) return; const reader = new FileReader();
+            const file = input.files[0]; if (!file) return; const reader = new FileReader();
             reader.onload = function(e) { chatDatabase[currentPartner].push({ sender: 'me', type: 'image', text: e.target.result }); renderCurrentChatMessages(); }; reader.readAsDataURL(file); input.value = '';
         }
-
-        function confirmTradeSuccess() {
-            const code = `#BUY-${Math.floor(100000 + Math.random() * 900000)}`, history = JSON.parse(localStorage.getItem('hltrade_history')) || [];
-            history.push({ code: code, partner: currentPartner, time: new Date().toLocaleTimeString('vi-VN') }); localStorage.setItem('hltrade_history', JSON.stringify(history)); alert(`🎉 CHỐT GIAO DỊCH THÀNH CÔNG!\nMã đơn: ${code}`); renderDashboardData(); toggleChatWindow();
-        }
+        function confirmTradeSuccess() { const code = `#BUY-${Math.floor(100000 + Math.random() * 900000)}`, history = JSON.parse(localStorage.getItem('hltrade_history')) || []; history.push({ code: code, partner: currentPartner, time: new Date().toLocaleTimeString('vi-VN') }); localStorage.setItem('hltrade_history', JSON.stringify(history)); alert(`🎉 CHỐT GIAO DỊCH THÀNH CÔNG!\nMã đơn: ${code}`); renderDashboardData(); toggleChatWindow(); }
         function handleSendTradeProposal() { alert(`Đã gửi đề xuất!`); toggleModal('tradeModal'); }
-        
-        function renderDashboardData() {
-            const u = JSON.parse(localStorage.getItem('hltrade_current_user')); if (!u) return; document.getElementById('dash-user-name').innerText = u.name; document.getElementById('dash-user-phone').innerText = u.phone;
-            const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [], pList = document.getElementById('myUploadedProductsList'); 
-            if (uploads.length > 0) { pList.innerHTML = uploads.map((i, idx) => `<div class="dash-item-card" style="justify-content: space-between;"><div style="display: flex; align-items: center; gap: 10px;"><div class="dash-item-img" style="background-image:url('${Array.isArray(i.img)?i.img:i.img}')"></div><div class="dash-item-info"><strong>${i.name}</strong><span>${i.price} đ</span></div></div><button onclick="deleteUploadedItem(${idx}, '${i.name}', '${i.cat}')" style="background: none; border: none; color: #e53e3e; cursor: pointer; padding: 5px 10px; font-size: 13px; font-weight:700;"><i class="fa-solid fa-trash-can"></i> Xóa</button></div>`).join(''); }
-            else { pList.innerHTML = `<p class="empty-text">Bạn chưa đăng tin món đồ nào...</p>`; }
-            const history = JSON.parse(localStorage.getItem('hltrade_history')) || [], hList = document.getElementById('myTradeHistoryList'); if (history.length > 0) { hList.innerHTML = history.map(i => `<div class="dash-item-card trade-success-card"><div class="dash-item-info"><strong>Mã đơn: ${i.code}</strong><span>Với: ${i.partner}</span></div><span class="status-success-badge">Thành Công</span></div>`).join(''); }
+        // BƯỚC 1: Khởi tạo kho dữ liệu gốc của hệ thống truyền trực tiếp bằng mảng đối tượng JavaScript sạch [INDEX]
+        function setupDefaultProductsDatabase() {
+            const defaultItems = [
+                { id: "def-1", name: "Áo Khoác Blazer Minimalist", price: "850.000", cat: "fashion", img: "https://unsplash.com", desc: "Áo blazer phong cách Hàn Quốc, chất vải dày dặn lịch sự, thích hợp mặc đi học đi sự kiện." },
+                { id: "def-2", name: "Tai Nghe Over-Ear ANC Ultra", price: "3.200.000", cat: "electronics", img: "https://unsplash.com", desc: "Tai nghe chống ồn chủ động cao cấp, bass cực ấm, pin trâu dùng liên tục 30 tiếng." },
+                { id: "def-3", name: "Hộp Salad Ức Gà Sốt Mè Rang", price: "75.000", cat: "food", img: "https://unsplash.com", desc: "Salad rau mầm tươi xanh kèm ức gà áp chảo ăn kiêng siêu ngon cho dân tập gym." },
+                { id: "def-4", name: "Xe Máy Điện Thông Minh EV-1", price: "45.000.000", cat: "vehicles", img: "https://unsplash.com", desc: "Xe chạy lướt 2000km mới tinh, phanh đĩa ABS an toàn, thích hợp vi vu quanh Hòa Lạc." },
+                { id: "def-5", name: "Bộ Tạ Tay Cao Cấp 20kg", price: "650.000", cat: "sports", img: "https://unsplash.com", desc: "Gồm các bánh tạ tháo lắp linh hoạt, cốt thép bọc cao su chống trầy xước sàn kí túc xá." },
+                { id: "def-6", name: "Phòng Trọ Khép Kín Cạnh Trường (Full Đồ)", price: "2.500.000", cat: "rooms-page", img: "https://unsplash.com", desc: "Phòng đầy đủ điều hòa, nóng lạnh, giường tủ, ban công thoáng mát, dọn vào ở ngay." }
+            ];
+            
+            defaultItems.forEach(item => {
+                globalProductStorage[item.id] = { name: item.name, price: item.price, desc: item.desc, images: [item.img], cat: item.cat };
+                const grid = document.getElementById("grid-" + item.cat);
+                if (grid) {
+                    let actionBtn = `<button class="btn-buy" onclick="openCheckoutForm('${item.name}', '${item.price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button>`;
+                    if (item.cat === 'rooms-page') { actionBtn = `<button class="btn-buy" style="width: 100%;" onclick="openCheckoutForm('Thuê phòng trọ', '2.500.000')"><i class="fa-solid fa-phone"></i> Đặt Thuê / Liên Hệ</button>`; }
+                    grid.insertAdjacentHTML('beforeend', `<div class="product-card" id="${item.id}"><div class="product-img" onclick="openProductDetailById('${item.id}')" style="background-image:url('${item.img}'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3>${item.name}</h3><p class="price">${item.price} đ</p><div class="card-actions">${actionBtn}</div></div></div>`);
+                }
+            });
         }
 
-        // HÀM ĐĂNG BÀI CHUẨN XÁC: Tách lấy đúng file ảnh đầu tiên làm nền ngoài sàn để bảo toàn chuỗi đa ảnh truyền vào Popup chi tiết
+        // BƯỚC 2: HÀM ĐĂNG TIN ĐA ẢNH CAO CẤP: Lưu ảnh gọn nhẹ vào mảng đối tượng JS, loại bỏ treo bấn hoàn toàn [INDEX]
         function handleUpload() {
             const name = document.getElementById('prodName').value, cat = document.getElementById('prodCategory').value, desc = document.getElementById('prodDesc').value, price = parseInt(document.getElementById('prodPrice').value).toLocaleString('vi-VN'), fileInput = document.getElementById('prodImage');
             if (!fileInput || fileInput.files.length === 0) { alert('Chọn ít nhất 1 ảnh thực tế!'); return; }
-            const files = Array.from(fileInput.files); let imgList = [], readCount = 0;
+            
+            const files = Array.from(fileInput.files), id = "user-prod-" + Date.now();
+            let imgList = [], readCount = 0;
+            
             files.forEach(file => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     imgList.push(e.target.result); readCount++;
                     if (readCount === files.length) {
-                        const imgListStr = imgList.join('|||'); 
-                        const firstImg = imgList; // Tách riêng ảnh đầu tiên
-                        const target = document.querySelector(`#${cat} .product-grid`);
-                        if (target) { target.insertAdjacentHTML('afterbegin', `<div class="product-card"><div class="product-img" onclick="openProductDetail('${name}', '${price}', \`${desc}\`, '${imgListStr}', '${cat}')" style="background-image:url('${firstImg}'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('${name}', '${price}', \`${desc}\`, '${imgListStr}', '${cat}')" style="cursor:pointer;">${name}</h3><p class="price">Định giá: ${price} đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('${name}', '${price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div>`); }
-                        const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || []; uploads.push({ name: name, price: price, img: firstImg, imgListStr: imgListStr, desc: desc, cat: cat }); localStorage.setItem('hltrade_uploaded_items', JSON.stringify(uploads));
-                        alert('🎉 ĐĂNG TIN ĐA ẢNH THÀNH CÔNG!'); document.getElementById('prodDesc').value = ""; renderDashboardData(); showCategory(cat); toggleModal('uploadModal');
+                        globalProductStorage[id] = { name: name, price: price, desc: desc, images: imgList, cat: cat };
+                        const target = document.getElementById("grid-" + cat);
+                        if (target) { target.insertAdjacentHTML('afterbegin', `<div class="product-card" id="${id}"><div class="product-img" onclick="openProductDetailById('${id}')" style="background-image:url('${imgList[0]}'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3>${name}</h3><p class="price">Định giá: ${price} đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('${name}', '${price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div>`); }
+                        
+                        // Đồng bộ chuẩn hóa ghi nhớ vào LocalStorage [INDEX]
+                        const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
+                        uploads.push({ id: id, name: name, price: price, images: imgList, desc: desc, cat: cat });
+                        localStorage.setItem('hltrade_uploaded_items', JSON.stringify(uploads));
+                        
+                        alert('🎉 ĐĂNG TIN CHUẨN SHOPEE THÀNH CÔNG!');
+                        document.getElementById('prodDesc').value = ""; renderDashboardData(); showCategory(cat); toggleModal('uploadModal');
                     }
                 }; reader.readAsDataURL(file);
             });
         }
+
+        // BƯỚC 3: HÀM KHÔI PHỤC TOÀN SÀN KHI F5: Quét sạch bộ nhớ, dứt điểm lỗi mất đồ khi tải lại trang [INDEX]
+        function reloadUploadedItemsOnFloor() {
+            const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
+            uploads.forEach(item => {
+                globalProductStorage[item.id] = { name: item.name, price: item.price, desc: item.desc, images: item.images, cat: item.cat };
+                const targetGrid = document.getElementById("grid-" + item.cat);
+                if (targetGrid) {
+                    targetGrid.insertAdjacentHTML('afterbegin', `<div class="product-card" id="${item.id}"><div class="product-img" onclick="openProductDetailById('${item.id}')" style="background-image:url('${item.images[0]}'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3>${item.name}</h3><p class="price">Định giá: ${item.price} đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('${item.name}', '${item.price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div>`);
+                }
+            });
+        }
+                // HÀM SỬA LỖI DASHBOARD: Tự động lôi kho đồ tự đăng ra để vẽ kèm nút Xóa thực tế
+        function renderDashboardData() {
+            const u = JSON.parse(localStorage.getItem('hltrade_current_user')); 
+            if (!u) return; 
+            
+            document.getElementById('dash-user-name').innerText = u.name; 
+            document.getElementById('dash-user-phone').innerText = u.phone;
+            
+            const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
+            const pList = document.getElementById('myUploadedProductsList'); 
+            
+            if (uploads.length > 0) { 
+                // Đồng bộ vẽ danh sách đồ kèm theo nút "Xóa bài" chuẩn cấu hình ID
+                pList.innerHTML = uploads.map((i, idx) => `
+                    <div class="dash-item-card" style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #edf2f7; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="dash-item-img" style="width: 40px; height: 45px; border-radius: 6px; background-size: cover; background-position: center; background-image:url('${Array.isArray(i.images) ? i.images[0] : i.images}')"></div>
+                            <div class="dash-item-info" style="display: flex; flex-direction: column; text-align: left;">
+                                <strong style="font-size: 13px; color: #111111;">${i.name}</strong>
+                                <span style="font-size: 11px; color: #e53e3e; font-weight: 700; margin-top: 2px;">${i.price} đ</span>
+                            </div>
+                        </div>
+                        <button onclick="deleteUploadedItem(${idx}, '${i.name.replace(/'/g, "\\'")}', '${i.cat}')" style="background: none; border: none; color: #e53e3e; cursor: pointer; padding: 5px 10px; font-size: 13px; font-weight:700;"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                    </div>
+                `).join(''); 
+            } else { 
+                pList.innerHTML = `<p class="empty-text" style="font-size: 13px; color: #a0aec0; text-align: center; padding: 15px 0;">Bạn chưa đăng tin món đồ nào...</p>`; 
+            }
+            
+            // Vẽ lịch sử giao dịch thành công phía dưới
+            const history = JSON.parse(localStorage.getItem('hltrade_history')) || [];
+            const hList = document.getElementById('myTradeHistoryList'); 
+            if (history.length > 0) { 
+                hList.innerHTML = history.map(i => `<div class="dash-item-card trade-success-card"><div class="dash-item-info"><strong>Mã đơn: ${i.code}</strong><span>Với: ${i.partner}</span></div><span class="status-success-badge">Thành Công</span></div>`).join(''); 
+            }
+        }
+
     </script>
 </body>
 </html>
