@@ -1,0 +1,173 @@
+/* ==========================================================================
+   1. THIẾT LẬP CHUNG & PHÔNG CHỮ SEGOE UI CHỐNG LỖI KHOẢNG CÁCH TIẾNG VIỆT
+   ========================================================================== */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important; 
+}
+body { background-color: #f4f6f9; color: #1a1a1a; }
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+/* ==========================================================================
+   2. NAVBAR THEO CẤU TRÚC SHOPEE (MÀU ĐEN - TRẮNG - ĐỎ RỰC RỠ)
+   ========================================================================== */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #ffffff; box-shadow: 0 4px 25px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+.nav-left-block { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.logo { font-size: 24px; font-weight: 800; color: #111111; letter-spacing: -1px; }
+.logo i { color: #e53e3e; }
+
+/* Thanh tìm kiếm bo tròn viền đỏ Shopee tích hợp nút kính lúp */
+.nav-search-block { flex: 1; max-width: 500px; margin: 0 25px; }
+.search-form { display: flex; width: 100%; border: 2px solid #e53e3e; border-radius: 30px; overflow: hidden; background: #ffffff; box-shadow: 0 2px 10px rgba(229, 62, 62, 0.05); }
+.search-input { flex: 1; border: none !important; padding: 10px 20px !important; font-size: 14px; outline: none; color: #334155; }
+.search-btn { background: #e53e3e; color: white; border: none; padding: 0 22px; cursor: pointer; font-size: 15px; transition: background 0.2s; }
+.search-btn:hover { background: #111111; }
+
+/* Cụm công cụ góc phải Navbar & Dòng chữ nhắn tin nhanh */
+.nav-right { display: flex; align-items: center; gap: 25px; }
+.btn-upload { background: #111111; color: white; border: none; padding: 11px 20px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.btn-upload:hover { background: #e53e3e; }
+.cart-icon { position: relative; font-size: 24px; cursor: pointer; color: #111111; }
+.badge { position: absolute; top: -5px; right: -8px; background: #e53e3e; color: white; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 50%; border: 2px solid #fff; }
+.user-profile-block { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.user-menu { font-weight: 700; color: #111111; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.quick-chat-nav-btn { font-size: 11px; font-weight: 700; color: #e53e3e; cursor: pointer; display: flex; align-items: center; gap: 4px; background: #fff5f5; padding: 3px 8px; border-radius: 20px; border: 1px solid rgba(229, 62, 62, 0.2); }
+.quick-chat-nav-btn:hover { background: #e53e3e; color: white; }
+/* ==========================================================================
+   3. HỘP GỢI Ý ĐỀ XUẤT TỪ KHÓA NHỎ ĐỔ XUỐNG DYNAMIC TRONG SUỐT QUÁ TRÌNH GÕ CHỮ
+   ========================================================================== */
+.search-suggestions-dropdown { position: absolute; top: 105%; left: 0; width: 100%; background: #ffffff; border: 1px solid #edf2f7; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); z-index: 1600; overflow: hidden; padding: 5px 0; }
+.suggestion-item { padding: 10px 20px; font-size: 13px; font-weight: 600; color: #4a5568; cursor: pointer; text-align: left; transition: all 0.15s ease; display: flex; align-items: center; }
+.suggestion-item:hover { background-color: #fff5f5; color: #e53e3e; }
+
+/* ==========================================================================
+   4. HERO BANNER SÔI ĐỘNG MUA SẮM & MENU DROPDOWN CHỐNG ẨN CHUỘT KHI DI CHUỘT
+   ========================================================================== */
+.hero { background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://unsplash.com') center/cover no-repeat; text-align: center; padding: 95px 20px; color: white; border-bottom: 4px solid #e53e3e; }
+.hero h2 { font-size: 40px; margin-bottom: 15px; font-weight: 800; }
+.hero p { font-size: 16px; color: #cbd5e1; margin-bottom: 25px; }
+.btn-hero { background: #e53e3e; color: white; border: none; padding: 13px 40px; font-size: 15px; font-weight: 700; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3); }
+.btn-hero:hover { background: #ffffff; color: #111111; }
+
+.category-dropdown { position: relative; display: inline-block; }
+.dropbtn { background: #111111; color: white; padding: 7px 14px; font-size: 12px; font-weight: 700; border: none; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.dropbtn:hover { background: #e53e3e; }
+.dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 240px; box-shadow: 0px 8px 30px rgba(0,0,0,0.15); border-radius: 12px; padding: 6px 0; z-index: 1500; border: 1px solid #edf2f7; margin-top: 0; top: 100%; text-align: left; }
+.dropdown-content a { color: #4a5568 !important; padding: 11px 18px; text-decoration: none; display: flex; align-items: center; font-size: 13px; font-weight: 600; }
+.dropdown-content a i { margin-right: 10px; color: #a0aec0; width: 18px; text-align: center; }
+.dropdown-content a:hover { background-color: #fff5f5; color: #e53e3e !important; }
+.category-dropdown:hover .dropdown-content { display: block; }
+
+/* Quy trình hướng dẫn 3 bước và banner tìm phòng trọ Hòa Lạc */
+.home-intro-section { text-align: center; padding: 25px 0; }
+.main-intro-title { font-size: 26px; font-weight: 800; color: #111111; margin-bottom: 35px; }
+.intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 45px; }
+.intro-box { background: #ffffff; padding: 30px 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+.intro-icon { font-size: 32px; color: #e53e3e; margin-bottom: 12px; }
+.room-banner-box { margin-top: 45px; background: url('https://unsplash.com') center/cover no-repeat; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+.room-banner-overlay { background: linear-gradient(135deg, rgba(17, 17, 17, 0.92) 0%, rgba(229, 62, 62, 0.45) 100%); padding: 55px 35px; text-align: center; }
+.room-banner-text h3 { font-size: 25px; font-weight: 800; color: #ffffff; margin-bottom: 12px; }
+.room-banner-text p { color: #e2e8f0; margin-bottom: 25px; font-size: 14px; }
+.btn-go-room { background: #ffffff; color: #111111; border: none; padding: 12px 35px; font-size: 14px; font-weight: 700; border-radius: 25px; cursor: pointer; }
+.btn-go-room:hover { background: #e53e3e; color: #ffffff; }
+/* ==========================================================================
+   5. THẺ SẢN PHẨM PHONG CÁCH CARD VÀ CỤM ALBUM ĐA ẢNH NHỎ THUMBNAIL SHOPEE [INDEX]
+   ========================================================================== */
+.category-section { margin-bottom: 45px; }
+.section-title { font-size: 24px; font-weight: 800; margin-bottom: 25px; color: #111111; display: flex; align-items: center; gap: 10px; border-left: 5px solid #e53e3e; padding-left: 12px; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
+.product-card { background: #ffffff; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.03); border: 1px solid #edf2f7; transition: all 0.3s ease; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: #e53e3e; }
+.product-img { height: 220px; background-size: cover; background-position: center; background-repeat: no-repeat; }
+.product-info { padding: 20px; text-align: left; }
+.product-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: #111111; }
+.price { font-size: 18px; font-weight: 800; color: #e53e3e; margin-bottom: 15px; }
+
+/* Hiệu ứng lướt chọn ảnh thu nhỏ lộng lẫy giống sàn thương mại [INDEX] */
+.detail-thumb-item { transition: all 0.2s ease; }
+.detail-thumb-item:hover { border-color: #e53e3e !important; transform: scale(1.06); }
+#detailThumbsRow::-webkit-scrollbar { height: 4px; }
+#detailThumbsRow::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+.card-actions { display: flex; gap: 10px; }
+.btn-buy { background: #fff5f5; color: #e53e3e; border: 1px solid #e53e3e; padding: 11px; flex: 1; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-buy:hover { background: #e53e3e; color: white; }
+.btn-trade-action { background: #111111; color: white; border: none; padding: 11px; flex: 1; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-trade-action:hover { background: #e53e3e; }
+.tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; background: #fff5f5; color: #e53e3e; border: 1px solid rgba(229, 62, 62, 0.2); }
+
+/* ==========================================================================
+   6. CỬA SỔ POP-UP HỆ THỐNG PHÔNG NỀN KÍNH MỜ GLASSMORPHISM
+   ========================================================================== */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(6px); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
+.modal-content { background: #ffffff; padding: 35px; border-radius: 24px; width: 100%; max-width: 440px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+.close-btn { position: absolute; top: 18px; right: 22px; font-size: 24px; cursor: pointer; color: #a0aec0; }
+.form-group { margin-bottom: 18px; text-align: left; }
+.form-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #4a5568; }
+.form-group input, .form-group select { width: 100%; padding: 13px; border: 1px solid #cbd5e0; border-radius: 12px; font-size: 13px; outline: none; }
+.form-group input:focus, .form-group select:focus { border-color: #e53e3e; box-shadow: 0 0 0 4px rgba(229, 62, 62, 0.1); }
+.btn-submit { background: #111111; color: white; border: none; width: 100%; padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+.btn-submit:hover { background: #e53e3e; }
+.auth-tabs { display: flex; border-bottom: 2px solid #edf2f7; margin-bottom: 25px; }
+.auth-tab { flex: 1; background: none; border: none; padding: 12px; font-size: 15px; font-weight: 700; color: #a0aec0; cursor: pointer; }
+.auth-tab.active { color: #e53e3e; border-bottom: 2px solid #e53e3e; }
+/* Giao diện lưu trữ Dashboard thông tin người dùng sinh viên */
+.dash-list-wrapper { max-height: 160px; overflow-y: auto; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
+.dash-item-card { display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #edf2f7; }
+.dash-item-img { width: 40px; height: 45px; border-radius: 6px; background-size: cover; background-position: center; }
+.dash-item-info { flex: 1; display: flex; flex-direction: column; text-align: left; }
+.dash-item-info strong { font-size: 13px; color: #111111; }
+.dash-item-info span { font-size: 11px; color: #718096; margin-top: 2px; }
+.trade-success-card { border-left: 4px solid #16a34a; }
+.status-success-badge { background: #f0fdf4; color: #16a34a; font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+
+/* ==========================================================================
+   7. CHÂN TRANG BẢN ĐỒ GOOGLE MAPS VÀ TRUNG TÂM TRỢ GIÚP KẾT NỐI BO VIỀN ĐỎ
+   ========================================================================== */
+.footer-container { background: #111111; color: #ffffff; padding: 45px 20px 20px 20px; margin-top: 70px; text-align: left; }
+.footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 35px; }
+.footer-left, .footer-right { flex: 1; min-width: 280px; }
+.footer-left h3, .footer-right h3 { font-size: 17px; font-weight: 700; margin-bottom: 18px; color: white; display: flex; align-items: center; gap: 8px; }
+.map-wrapper { overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.support-desc { font-size: 14px; color: #a0aec0; line-height: 1.6; margin-bottom: 20px; }
+.support-channels { display: flex; flex-direction: column; gap: 12px; }
+.support-card-btn { display: flex; align-items: center; gap: 15px; background: #222222; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #ffffff; border: 1px solid #333333; transition: all 0.2s; }
+.support-card-btn:hover { border-color: #e53e3e; background: #2d3748; transform: translateX(4px); }
+.support-card-btn i { font-size: 22px; color: #e53e3e; }
+.support-card-btn div { display: flex; flex-direction: column; text-align: left; }
+.support-card-btn div span { font-size: 11px; color: #a0aec0; }
+.support-card-btn div strong { font-size: 15px; font-weight: 700; color: #ffffff; }
+.footer-bottom { text-align: center; color: #718096; font-size: 12px; margin-top: 35px; padding-top: 20px; border-top: 1px solid #222222; }
+
+/* Khung chat đôi 2 người chia cột chuẩn Shopee Chat */
+.chat-box-modal { position: fixed; bottom: 25px; right: 25px; width: 620px; height: 460px; background: #ffffff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.18); border: 1px solid #edf2f7; display: flex; flex-direction: column; z-index: 3000; overflow: hidden; }
+.chat-box-header { background: #111111; color: white; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+.chat-main-layout { display: flex; flex: 1; overflow: hidden; }
+.chat-sidebar { width: 190px; border-right: 1px solid #edf2f7; overflow-y: auto; background: #f8fafc; }
+.chat-user-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #f1f5f9; text-align: left; }
+.chat-user-item.active { background: #fff5f5; border-left: 4px solid #e53e3e; }
+.chat-user-item strong { font-size: 12px; display: block; color: #111111; }
+.chat-user-item p { font-size: 11px; color: #718096; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chat-content-area { flex: 1; display: flex; flex-direction: column; }
+.chat-partner-header { padding: 12px 20px; border-bottom: 1px solid #edf2f7; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; background: #fff; }
+.btn-confirm-trade { background: #e53e3e; color: white; border: none; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.btn-confirm-trade:hover { background: #c53030; }
+.chat-box-body { flex: 1; padding: 18px; background: #f7fafc; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.msg-bubble { max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: 13px; line-height: 1.5; word-wrap: break-word; }
+.bot-msg { background: #ffffff; color: #1a1a1a; align-self: flex-start; border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; }
+.user-msg { background: #e53e3e; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+.chat-box-footer { padding: 12px; background: #ffffff; border-top: 1px solid #edf2f7; display: flex; gap: 10px; }
+.chat-box-footer input { flex: 1; border: 1px solid #cbd5e0 !important; padding: 10px 16px !important; border-radius: 20px !important; font-size: 13px; outline: none; }
+.chat-box-footer button { background: #111111; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.chat-box-footer button:hover { background: #e53e3e; }
+
+/* CSS Lịch sử chat trong Bảng Thông Tin Người Dùng */
+.dash-chat-history-item { display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 10px 12px; border-radius: 8px; border: 1px solid #edf2f7; cursor: pointer; transition: all 0.2s ease; margin-top: 5px; }
+.dash-chat-history-item:hover { background: #fff5f5; border-color: #e53e3e; }
+.dash-chat-history-item i { font-size: 24px; color: #a0aec0; }
+.dash-chat-info { flex: 1; display: flex; flex-direction: column; text-align: left; }
+.dash-chat-info strong { font-size: 13px; color: #1a1a1a; }
+.dash-chat-info span { font-size: 11px; color: #718096; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 280px; margin-top: 2px; }
+.chat-status-dot { width: 8px; height: 8px; background-color: #e53e3e; border-radius: 50%; }

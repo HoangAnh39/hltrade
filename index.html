@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLTRADE - Sàn Trao Đổi Sinh Viên Hòa Lạc</title>
+    <!-- Bộ icon thời thượng Font Awesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Thanh điều hướng đa danh mục cao cấp (Bố cục Shopee) -->
+    <nav class="navbar">
+        <div class="nav-left-block">
+            <div class="logo" onclick="showCategory('home')" style="cursor: pointer;"><i class="fa-solid fa-bolt-lightning"></i> HLTRADE</div>
+            <div class="category-dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-bars"></i> Danh Mục Sản Phẩm</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" id="menu-fashion" onclick="showCategory('fashion')"><i class="fa-solid fa-shirt"></i> Quần áo</a>
+                    <a href="javascript:void(0)" id="menu-electronics" onclick="showCategory('electronics')"><i class="fa-solid fa-laptop"></i> Điện tử</a>
+                    <a href="javascript:void(0)" id="menu-food" onclick="showCategory('food')"><i class="fa-solid fa-utensils"></i> Đồ ăn</a>
+                    <a href="javascript:void(0)" id="menu-vehicles" onclick="showCategory('vehicles')"><i class="fa-solid fa-motorcycle"></i> Xe cộ</a>
+                    <a href="javascript:void(0)" id="menu-realestate" onclick="showCategory('realestate')"><i class="fa-solid fa-house"></i> Bất động sản</a>
+                    <a href="javascript:void(0)" id="menu-sports" onclick="showCategory('sports')"><i class="fa-solid fa-dumbbell"></i> Thể thao</a>
+                    <a href="javascript:void(0)" id="menu-pets" onclick="showCategory('pets')"><i class="fa-solid fa-paw"></i> Thú cưng</a>
+                    <a href="javascript:void(0)" id="menu-baby" onclick="showCategory('baby')"><i class="fa-solid fa-baby"></i> Mẹ & Bé</a>
+                    <a href="javascript:void(0)" id="menu-books" onclick="showCategory('books')"><i class="fa-solid fa-book"></i> Sách & Truyện</a>
+                    <a href="javascript:void(0)" id="menu-cosmetics" onclick="showCategory('cosmetics')"><i class="fa-solid fa-wand-magic-sparkles"></i> Mỹ phẩm</a>
+                    <a href="javascript:void(0)" id="menu-appliances" onclick="showCategory('appliances')"><i class="fa-solid fa-couch"></i> Đồ gia dụng</a>
+                    <a href="javascript:void(0)" id="menu-digital" onclick="showCategory('digital')"><i class="fa-solid fa-gamepad"></i> Hàng kỹ thuật số</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Thanh tìm kiếm quét toàn sàn và hộp thả đề xuất chữ nhỏ Shopee -->
+        <div class="nav-search-block" style="position: relative;">
+            <form class="search-form" onsubmit="event.preventDefault(); handleNavbarSearch();">
+                <input type="text" id="navbarSearchInput" placeholder="Tìm giáo trình, đồ kí túc xá..." class="search-input" oninput="showSearchSuggestions(this.value)" autocomplete="off">
+                <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div id="searchSuggestionsBox" class="search-suggestions-dropdown" style="display: none;"></div>
+        </div>
+        <div class="nav-right">
+            <button class="btn-upload" onclick="toggleModal('uploadModal')"><i class="fa-solid fa-circle-plus"></i> Đăng Tin</button>
+            <div class="cart-icon" onclick="toggleModal('cartDetailModal')">
+                <i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-count">0</span>
+            </div>
+            <div class="user-profile-block">
+                <div class="user-menu" id="user-menu-btn" onclick="handleUserClick()">
+                    <i class="fa-solid fa-circle-user"></i><span id="user-status">Đăng nhập</span>
+                </div>
+                <div class="quick-chat-nav-btn" id="quickChatBtn" onclick="toggleChatWindow()" style="display: none;">
+                    <i class="fa-solid fa-comment-dots"></i> Nhắn tin trao đổi
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner chính chào mừng sinh viên -->
+    <header class="hero">
+        <h2></h2>
+        <p>Góc chia sẻ đồ cũ nội bộ sinh viên Hòa Lạc. Tiết kiệm chi phí, dọn sạch không gian kí túc xá.</p>
+        <button class="btn-hero" onclick="toggleModal('uploadModal')">Bắt Đầu Đăng Tin <i class="fa-solid fa-arrow-right"></i></button>
+    </header>
+    <main class="container">
+        <!-- NỘI DUNG TRANG CHỦ MẶC ĐỊNH -->
+        <section id="home-content" class="home-intro-section">
+            <h2 class="main-intro-title">Nền Tảng Trao Đổi Đồ Sinh Viên Hòa Lạc</h2>
+            <div class="intro-grid">
+                <div class="intro-box"><div class="intro-icon"><i class="fa-solid fa-camera-retro"></i></div><h3>1. Chụp ảnh bài đăng</h3><p>Nhấp trực tiếp vào ảnh sản phẩm bất kỳ để mở album xem đa ảnh góc cạnh.</p></div>
+                <div class="intro-box"><div class="intro-icon"><i class="fa-solid fa-comments"></i></div><h3>2. Nhắn tin gửi ảnh</h3><p>Mở khung chat để thương lượng trực tiếp và gửi tệp hình ảnh thực tế cho nhau.</p></div>
+                <div class="intro-box"><div class="intro-icon"><i class="fa-solid fa-truck-fast"></i></div><h3>3. Trao nhận trực tiếp</h3><p> Hẹn gặp nhau để nhận món đồ.</p></div>
+            </div>
+
+            <!-- BANNER CHUYỂN HƯỚNG MỤC PHÒNG TRỌ -->
+            <div class="room-banner-box">
+                <div class="room-banner-overlay">
+                    <div class="room-banner-text">
+                        <h3><i class="fa-solid fa-house-chimney-user"></i> Góc Tìm Ở Ghép Hòa Lạc</h3>
+                        <p>Tìm bạn ở ghép chung cư mini hoặc phòng trọ khép kín an ninh, giá rẻ quanh khuôn viên trường.</p>
+                        <button class="btn-go-room" onclick="showCategory('rooms-page')">Xem Danh Sách Phòng Trọ <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CÁC TRANG DANH MỤC SẢN PHẨM MẪU -->
+        <section id="fashion" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-shirt"></i> Quần áo</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Áo Khoác Blazer Minimalist', '850.000', 'Áo blazer phong cách Hàn Quốc, chất vải dày dặn lịch sự, thích hợp mặc đi học đi sự kiện.', 'https://unsplash.com', 'fashion')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Áo Khoác Blazer Minimalist', '850.000', 'Áo blazer phong cách Hàn Quốc, chất vải dày dặn lịch sự, thích hợp mặc đi học đi sự kiện.', 'https://unsplash.com', 'fashion')" style="cursor:pointer;">Áo Khoác Blazer Minimalist</h3><p class="price">850.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Áo Khoác Blazer', '850.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="electronics" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-laptop"></i> Điện tử</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Tai Nghe Over-Ear ANC Ultra', '3.200.000', 'Tai nghe chống ồn chủ động cao cấp, bass cực ấm, pin trâu dùng liên tục 30 tiếng.', 'https://unsplash.com', 'electronics')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Tai Nghe Over-Ear ANC Ultra', '3.200.000', 'Tai nghe chống ồn chủ động cao cấp, bass cực ấm, pin trâu dùng liên tục 30 tiếng.', 'https://unsplash.com', 'electronics')" style="cursor:pointer;">Tai Nghe Over-Ear ANC Ultra</h3><p class="price">3.200.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Tai Nghe ANC', '3.200.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="food" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-utensils"></i> Đồ ăn</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Hộp Salad Ức Gà Sốt Mè Rang', '75.000', 'Salad rau mầm tươi xanh kèm ức gà áp chảo ăn kiêng siêu ngon cho dân tập gym.', 'https://unsplash.com', 'food')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Hộp Salad Ức Gà Sốt Mè Rang', '75.000', 'Salad rau mầm tươi xanh kèm ức gà áp chảo ăn kiêng siêu ngon cho dân tập gym.', 'https://unsplash.com', 'food')" style="cursor:pointer;">Hộp Salad Ức Gà Sốt Mè Rang</h3><p class="price">75.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Hộp Salad Ức Gà', '75.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button></div></div></div></div></section>
+        <section id="vehicles" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-motorcycle"></i> Xe cộ</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Xe Máy Điện EV-1', '45.000.000', 'Xe chạy lướt 2000km mới tinh, phanh đĩa ABS an toàn, thích hợp vi vu quanh Hòa Lạc.', 'https://unsplash.com', 'vehicles')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Xe Máy Điện EV-1', '45.000.000', 'Xe chạy lướt 2000km mới tinh, phanh đĩa ABS an toàn, thích hợp vi vu quanh Hòa Lạc.', 'https://unsplash.com', 'vehicles')" style="cursor:pointer;">Xe Máy Điện Thông Minh EV-1</h3><p class="price">45.000.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Xe Máy Điện EV-1', '45.000.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="realestate" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-house"></i> Bất động sản</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="showCategory('realestate')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><h3 onclick="showCategory('realestate')" style="cursor:pointer;">Căn Hộ Studio Căn Góc View Hồ</h3><p class="price">1.850.000.000 đ</p><div class="card-actions"><button class="btn-buy" style="width:100%" onclick="alert('Đã gửi thông tin kết nối!')">Liên hệ xem phòng</button></div></div></div></div></section>
+        <section id="sports" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Thể thao</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Bộ Tạ Tay Cao Cấp 20kg', '650.000', 'Gồm các bánh tạ tháo lắp linh hoạt, cốt thép bọc cao su chống trầy xước sàn kí túc xá.', 'https://unsplash.com', 'sports')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Bộ Tạ Tay Cao Cấp 20kg', '650.000', 'Gồm các bánh tạ tháo lắp linh hoạt, cốt thép bọc cao su chống trầy xước sàn kí túc xá.', 'https://unsplash.com', 'sports')" style="cursor:pointer;">Bộ Tạ Tay Cao Cấp 20kg</h3><p class="price">650.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Bộ Tạ Tay 20kg', '650.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="pets" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-paw"></i> Thú cưng</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Chú Chó Corgi Thuần Chủng', '5.500.000', 'Chó Corgi chân ngắn siêu đáng yêu, đã tiêm phòng đầy đủ, cần tìm chủ mới yêu thương.', 'https://unsplash.com', 'pets')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Chú Chó Corgi Thuần Chủng', '5.500.000', 'Chó Corgi chân ngắn siêu đáng yêu, đã tiêm phòng đầy đủ, cần tìm chủ mới yêu thương.', 'https://unsplash.com', 'pets')" style="cursor:pointer;">Chú Chó Corgi Thuần Chủng</h3><p class="price">5.500.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Chú Chó Corgi', '5.500.000')"><i class="fa-solid fa-paw"></i> Nhận nuôi</button></div></div></div></div></section>
+        <section id="baby" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-baby"></i> Mẹ & Bé</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Xe Đẩy Trẻ Em Gấp Gọn', '1.200.000', 'Xe đẩy em bé siêu nhẹ, gấp gọn dễ dàng bỏ cốp ô tô, còn mới 95%.', 'https://unsplash.com', 'baby')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Xe Đẩy Trẻ Em Gấp Gọn', '1.200.000', 'Xe đẩy em bé siêu nhẹ, gấp gọn dễ dàng bỏ cốp ô tô, còn mới 95%.', 'https://unsplash.com', 'baby')" style="cursor:pointer;">Xe Đẩy Trẻ Em Gấp Gọn</h3><p class="price">1.200.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Xe Đẩy Trẻ Em', '1.200.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="books" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-book"></i> Sách & Truyện</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Trọn Bộ Sách Hạt Giống Tâm Hồn', '250.000', 'Gồm 5 cuốn sách truyền cảm hứng, sách giữ gìn cẩn thận không rách nát.', 'https://unsplash.com', 'books')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Trọn Bộ Sách Hạt Giống Tâm Hồn', '250.000', 'Gồm 5 cuốn sách truyền cảm hứng, sách giữ gìn cẩn thận không rách nát.', 'https://unsplash.com', 'books')" style="cursor:pointer;">Trọn Bộ Sách Hạt Giống Tâm Hồn</h3><p class="price">250.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Bộ Sách Hạt Giống', '250.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="cosmetics" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Mỹ phẩm</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Bộ Kem Dưỡng Ẩm Nhật Bản', '450.000', 'Cấp ẩm sâu cho da mùa hanh khô, hàng chính hãng xách tay nguyên seal.', 'https://unsplash.com', 'cosmetics')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Bộ Kem Dưỡng Ẩm Nhật Bản', '450.000', 'Cấp ẩm sâu cho da mùa hanh khô, hàng chính hãng xách tay nguyên seal.', 'https://unsplash.com', 'cosmetics')" style="cursor:pointer;">Bộ Kem Dưỡng Ẩm Nhật Bản</h3><p class="price">450.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Bộ Kem Dưỡng Ẩm', '450.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button></div></div></div></div></section>
+        <section id="appliances" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-couch"></i> Đồ gia dụng</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Ghế Sofa Bọc Da Phòng Khách', '4.500.000', 'Sofa da công nghiệp cao cấp, đệm mút êm ái đàn hồi tốt, không bong tróc.', 'https://unsplash.com', 'appliances')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Ghế Sofa Bọc Da Phòng Khách', '4.500.000', 'Sofa da công nghiệp cao cấp, đệm mút êm ái đàn hồi tốt, không bong tróc.', 'https://unsplash.com', 'appliances')" style="cursor:pointer;">Ghế Sofa Bọc Da Phòng Khách</h3><p class="price">4.500.000 đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('Ghế Sofa', '4.500.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div></div></section>
+        <section id="digital" class="category-section" style="display: none;"><h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Hàng kỹ thuật số</h2><div class="product-grid"><div class="product-card"><div class="product-img" onclick="openProductDetail('Tài Khoản Steam Có 20+ Game', '1.500.000', 'Tài khoản chính chủ sạch, nhiều tựa game bom tấn AAA hành động nhập vai thịnh hành.', 'https://unsplash.com', 'digital')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('Tài Khoản Steam Có 20+ Game', '1.500.000', 'Tài khoản chính chủ sạch, nhiều tựa game bom tấn AAA hành động nhập vai thịnh hành.', 'https://unsplash.com', 'digital')" style="cursor:pointer;">Tài Khoản Steam Có 20+ Game</h3><p class="price">1.500.000 đ</p><div class="card-actions"><button class="btn-buy" style="width:100%" onclick="openCheckoutForm('Tài Khoản Steam', '1.500.000')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button></div></div></div></div></section>
+        
+        <!-- TRANG PHÒNG TRỌ -->
+        <section id="rooms-page" class="category-section" style="display: none;">
+            <div class="section-header-flex"><h2 class="section-title"><i class="fa-solid fa-building-user"></i> Khu Vực Phòng Trọ & Ở Ghép</h2></div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img" onclick="openProductDetail('Phòng Trọ Khép Kín Cạnh Trường (Full Đồ)', '2.500.000', 'Phòng đầy đủ điều hòa, nóng lạnh, giường tủ, ban công thoáng mát, dọn vào ở ngay.', 'https://unsplash.com', 'rooms-page')" style="background-image: url('https://unsplash.com'); cursor:pointer;"></div>
+                    <div class="product-info"><h3>Phòng Trọ Khép Kín Cạnh Trường (Full Đồ)</h3><p class="price">2.500.000 đ/tháng</p><div class="card-actions"><button class="btn-buy" style="width: 100%;" onclick="openCheckoutForm('Thuê phòng trọ', '2.500.000')"><i class="fa-solid fa-phone"></i> Đặt Thuê / Liên Hệ</button></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- POP-UP CHI TIẾT SẢN PHẨM: ĐA ẢNH & MÔ TẢ NGƯỜI BÁN CHUẨN SHOPEE -->
+    <div id="productDetailModal" class="modal">
+        <div class="modal-content" style="max-width: 600px; padding: 25px;">
+            <span class="close-btn" onclick="toggleModal('productDetailModal')">&times;</span>
+            <div class="detail-layout" style="display: flex; flex-direction: column; gap: 20px; text-align: left;">
+                <!-- Vùng hiển thị ảnh lớn và cụm ảnh nhỏ lướt chọn -->
+                <div class="detail-images-block">
+                    <div id="detailMainImg" style="width: 100%; height: 280px; background-size: cover; background-position: center; border-radius: 12px; border: 1px solid #edf2f7; margin-bottom: 10px;"></div>
+                    <div id="detailThumbsRow" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;"></div>
+                </div>
+                <!-- Vùng thông tin tên giá và mô tả người bán -->
+                <div class="detail-info-block">
+                    <h2 id="detailTitle" style="text-align: left; margin-bottom: 8px; font-size: 20px;"></h2>
+                    <p id="detailPrice" style="font-size: 22px; font-weight: 800; color: #e53e3e; margin-bottom: 15px;"></p>
+                    <div style="background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
+                        <h4 style="font-size: 13px; color: #4a5568; margin-bottom: 6px;"><i class="fa-solid fa-file-lines"></i> Mô tả từ người bán:</h4>
+                        <p id="detailDesc" style="font-size: 13px; color: #1a1a1a; line-height: 1.6; white-space: pre-wrap;"></p>
+                    </div>
+                    <div id="detailActionsRow" class="card-actions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- POP-UP 2: BẢNG QUẢN LÝ THÔNG TIN NGƯỜI DÙNG SINH VIÊN -->
+    <div id="authModal" class="modal">
+        <div class="modal-content auth-box" style="max-width: 550px;">
+            <span class="close-btn" onclick="toggleModal('authModal')">&times;</span>
+            <div class="auth-tabs">
+                <button id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')">Đăng Nhập</button>
+                <button id="tab-register" class="auth-tab" onclick="switchAuthTab('register')">Đăng Ký</button>
+                <button id="tab-dashboard" class="auth-tab" onclick="switchAuthTab('dashboard')" style="display: none;">Thông Tin Của Bạn</button>
+            </div>
+            <form id="form-login" onsubmit="event.preventDefault(); handlePhoneLogin();">
+                <div class="form-group"><label>Số điện thoại</label><input type="tel" id="loginPhone" required placeholder="Nhập số điện thoại..." pattern="[0-9]{10}"></div>
+                <div class="form-group"><label>Mật khẩu</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+                <button type="submit" class="btn-submit">Đăng Nhập</button>
+            </form>
+            <form id="form-register" onsubmit="event.preventDefault(); handlePhoneRegister();" style="display: none;">
+                <div class="form-group"><label>Họ và Tên</label><input type="text" id="regName" required placeholder="Nhập họ tên..."></div>
+                <div class="form-group"><label>Số điện thoại</label><input type="tel" id="regPhone" required placeholder="Ví dụ: 0375..." pattern="[0-9]{10}"></div>
+                <div class="form-group"><label>Mật khẩu mới</label><input type="password" id="regPassword" required placeholder="Tối thiểu 6 ký tự" minlength="6"></div>
+                <button type="submit" class="btn-submit">Tạo Tài Khoản</button>
+            </form>
+            <div id="form-dashboard" style="display: none; text-align: left;">
+                <div class="dashboard-user-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #edf2f7; padding-bottom:12px; margin-bottom:15px;">
+                    <div><h3><i class="fa-solid fa-graduation-cap"></i> Sinh Viên: <span id="dash-user-name" style="color:#e53e3e;">nguyen le hoang</span></h3><p style="font-size:12px;color:#718096;margin-top:4px;"><i class="fa-solid fa-phone"></i> SĐT: <span id="dash-user-phone">0123...</span></p></div>
+                    <button onclick="logoutAccount()" style="background:#e53e3e; color:white; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;">Đăng Xuất</button>
+                </div>
+                <div class="dash-block" style="margin-bottom: 15px;"><h5><i class="fa-solid fa-bullhorn" style="color:#e53e3e;"></i> Các Bài Đăng Tin Trao Đổi Của Bạn</h5><div id="myUploadedProductsList" class="dash-list-wrapper"><p class="empty-text">Bạn chưa đăng tin món đồ nào...</p></div></div>
+                <div class="dash-block" style="margin-bottom: 15px;"><h5><i class="fa-solid fa-message" style="color:#e53e3e;"></i> Các Cuộc Trò Chuyện Đang Nhắn Tin</h5><div class="dash-list-wrapper" style="gap:5px; padding:5px;"><div class="dash-chat-history-item" onclick="toggleModal('authModal'); toggleChatWindow(); switchChatPartner('Hoàng Long');"><i class="fa-solid fa-circle-user"></i><div class="dash-chat-info"><strong>Hoàng Long</strong><span>Nhấp vào để tiếp tục nhắn tin thương lượng...</span></div><span class="chat-status-dot"></span></div><div class="dash-chat-history-item" onclick="toggleModal('authModal'); toggleChatWindow(); switchChatPartner('Minh Đức');"><i class="fa-solid fa-circle-user"></i><div class="dash-chat-info"><strong>Minh Đức</strong><span>Đang nhắn tin trao đổi chốt đơn...</span></div></div></div></div>
+                <div class="dash-block"><h5><i class="fa-solid fa-handshake" style="color:#e53e3e;"></i> Lịch Sử Giao Dịch Đã Chốt Đồ</h5><div id="myTradeHistoryList" class="dash-list-wrapper"><p class="empty-text">Chưa có giao dịch chốt thành công...</p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POP-UP 3: ĐĂNG TIN ĐA ẢNH & MÔ TẢ NGƯỜI BÁN CHUẨN SHOPEE -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content"><span class="close-btn" onclick="toggleModal('uploadModal')">&times;</span><h2>Đăng Tin Trao Đổi Đồ Cũ</h2><form onsubmit="event.preventDefault(); handleUpload();"><div class="form-group"><label>Tên sản phẩm</label><input type="text" id="prodName" required></div><div class="form-group"><label>Danh mục</label><select id="prodCategory"><option value="fashion">Quần áo</option><option value="electronics">Điện tử</option><option value="food">Đồ ăn</option><option value="vehicles">Xe cộ</option><option value="realestate">Bất động sản</option><option value="sports">Thể thao</option><option value="pets">Thú cưng</option><option value="baby">Mẹ & Bé</option><option value="books">Sách & Truyện</option><option value="cosmetics">Mỹ phẩm</option><option value="appliances">Đồ gia dụng</option><option value="digital">Hàng kỹ thuật số</option><option value="rooms-page">Phòng trọ & Ở ghép</option></select></div><div class="form-group"><label>Giá ước lượng (đ)</label><input type="number" id="prodPrice" required></div><div class="form-group"><label>Mô tả chi tiết món đồ</label><textarea id="prodDesc" rows="3" placeholder="Ghi rõ tình trạng đồ cũ, phụ kiện đi kèm..." style="width:100%; padding:12px; border:1px solid #cbd5e0; border-radius:10px; font-size:13px; outline:none; font-family:inherit; resize: none;"></textarea></div><div class="form-group"><label>Hình ảnh sản phẩm (Có thể chọn chọn tối đa 3-4 ảnh cùng lúc)</label><input type="file" id="prodImage" accept="image/*" multiple required></div><button type="submit" class="btn-submit">Đăng Tin Ngay</button></form></div>
+    </div>
+    <!-- POP-UP 4: ĐỀ NGHỊ ĐỔI ĐỒ -->
+    <div id="tradeModal" class="modal">
+        <div class="modal-content"><span class="close-btn" onclick="toggleModal('tradeModal')">&times;</span><h2>Gửi Đề Nghị Đổi Đồ</h2><form onsubmit="event.preventDefault(); handleSendTradeProposal();"><div class="form-group"><label>Món đồ của bạn mang đi đổi</label><select id="userTradeSelect" required><option value="Áo thun">Áo Hoodie cá tính của tôi</option><option value="Sách cũ">Giáo trình đại học của tôi</option></select></div><button type="submit" class="btn-submit">Gửi Đề Nghị</button></form></div>
+    </div>
+
+    <!-- POP-UP 5: BIỂU MẪU ĐẶT MUA NGAY (TỐI GIẢN TỰ ĐỘNG BIẾN ĐỔI CHỮ) -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content"><span class="close-btn" onclick="toggleModal('checkoutModal')">&times;</span><h2>Thông Tin Đặt Mua Trực Tiếp</h2><form onsubmit="event.preventDefault(); handleConfirmPurchase();"><div class="form-group"><label>Tên của bạn</label><input type="text" id="buyerName" required></div><div class="form-group"><label>Số điện thoại liên hệ</label><input type="tel" id="buyerPhone" required pattern="[0-9]{10}"></div><div class="form-group"><label>Lời nhắn hẹn gặp mặt trực tiếp nhận đồ</label><input type="text" id="buyerNote" required placeholder="Ví dụ: Trưa mai hẹn gặp ở canteen trường nhé..."></div><button type="submit" class="btn-submit" id="submitCheckoutBtn">Xác Nhận Mua</button></form></div>
+    </div>
+
+    <!-- POP-UP 6: KHUNG CHI TIẾT GIỎ HÀNG -->
+    <div id="cartDetailModal" class="modal">
+        <div class="modal-content auth-box" style="max-width: 450px;"><span class="close-btn" onclick="toggleModal('cartDetailModal')">&times;</span><h2>Các Món Đồ Đã Đặt Mua thẳng</h2><div id="myCartItemsList" class="dash-list-wrapper"><p class="empty-text">Giỏ hàng trống...</p></div></div>
+    </div>
+
+    <!-- CHÂN TRANG ĐA NĂNG CÓ BẢN ĐỒ VÀ KHUNG HỖ TRỢ -->
+    <footer class="footer-container">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3><i class="fa-solid fa-map-location-dot"></i> Vị Trí Của Chúng Tôi</h3>
+                <div class="map-wrapper"><iframe src="https://google.com" width="100%" height="200" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe></div>
+            </div>
+            <div class="footer-right">
+                <h3><i class="fa-solid fa-headset"></i> Trung Tâm Hỗ Trợ</h3>
+                <p class="support-desc">Hệ thống HLTRADE hoạt động 24/7 hỗ trợ sinh viên.</p>
+                <div class="support-channels">
+                    <a href="tel:0375408826" class="support-card-btn"><i class="fa-solid fa-phone-volume"></i><div><span>Hotline</span><strong>0375 408 826</strong></div></a>
+                    <a href="javascript:void(0)" onclick="toggleChatWindow()" class="support-card-btn"><i class="fa-solid fa-comments"></i><div><span>Trực tuyến</span><strong>Chat Ngay</strong></div></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- CỬA SỔ CHAT TRỰC TUYẾN 2 NGƯỜI CHIA CỘT CHUẨN SHOPEE + TÍCH HỢP ICON GỬI ẢNH THỰC TẾ -->
+    <div id="chatBoxWindow" class="chat-box-modal" style="display: none;">
+        <div class="chat-box-header"><h3><i class="fa-solid fa-comments"></i> Hộp Thoại Thương Lượng Đổi Đồ</h3><button class="chat-close-btn" onclick="toggleChatWindow()">&times;</button></div>
+        <div class="chat-main-layout">
+            <div class="chat-sidebar">
+                <div class="chat-user-item active" id="partner-Long" onclick="switchChatPartner('Hoàng Long')"><div class="chat-user-info"><strong>Hoàng Long</strong><p id="preview-Long">Chào bạn, đổi tai nghe lấy áo...</p></div></div>
+                <div class="chat-user-item" id="partner-Duc" onclick="switchChatPartner('Minh Đức')"><div class="chat-user-info"><strong>Minh Đức</strong><p id="preview-Duc">Món đồ này còn không bạn?...</p></div></div>
+            </div>
+            <div class="chat-content-area">
+                <div class="chat-partner-header"><span id="currentChatName">Đang chat với: Hoàng Long</span><button class="btn-confirm-trade" onclick="confirmTradeSuccess()"><i class="fa-solid fa-handshake"></i> Chốt Đơn</button></div>
+                <div id="chatMessageContent" class="chat-box-body"></div>
+                <div class="chat-box-footer">
+                    <label for="chatImageInput" style="cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 5px; font-size: 18px; color: #718096;"><i class="fa-solid fa-camera"></i></label>
+                    <input type="file" id="chatImageInput" accept="image/*" style="display: none;" onchange="sendUserChatImage(this)">
+                    <input type="text" id="userChatInput" placeholder="Nhập tin nhắn thương lượng..." onkeypress="if(event.key === 'Enter') sendUserChatMessage();">
+                    <button onclick="sendUserChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       HỆ THỐNG LOGIC ĐIỀU KHIỂN SCRIPT ĐỘNG TOÀN SÀN SINH VIÊN
+       ========================================================================== -->
+    <script>
+        function showCategory(targetId) {
+            const categories = ['home-content', 'fashion', 'electronics', 'food', 'vehicles', 'realestate', 'sports', 'pets', 'baby', 'books', 'cosmetics', 'appliances', 'digital', 'rooms-page'];
+            categories.forEach(id => {
+                const el = document.getElementById(id); if (el) { el.style.display = 'none'; }
+            });
+            if (targetId === 'home') { document.getElementById('home-content').style.display = 'block'; }
+            else { const targetElement = document.getElementById(targetId); if (targetElement) { targetElement.style.display = 'block'; } }
+            window.scrollTo(0, 0);
+        }
+
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId); if (modal) { modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex'; }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; }
+        }
+        function switchAuthTab(type) {
+            const tabs = ['login', 'register', 'dashboard'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-' + t); const form = document.getElementById('form-' + t);
+                if (btn) { btn.classList.remove('active'); } if (form) { form.style.display = 'none'; }
+            });
+            document.getElementById('tab-' + type).classList.add('active'); document.getElementById('form-' + type).style.display = 'block';
+        }
+
+        // HÀM XEM CHI TIẾT SẢN PHẨM: Bung mở album ảnh lướt góc nhìn và đọc mô tả thực tế
+        function openProductDetail(title, price, desc, imgListStr, catId) {
+            const imgList = imgListStr.split('|||'); // Cắt tách chuỗi bảo toàn danh sách mảng đa ảnh
+            
+            document.getElementById('detailTitle').innerText = title;
+            document.getElementById('detailPrice').innerText = price + " đ";
+            document.getElementById('detailDesc').innerText = desc || "Người bán không để lại mô tả bổ sung cho món đồ này.";
+            
+            // Đặt ảnh đầu tiên làm ảnh đại diện lớn chính diện
+            const mainImgBox = document.getElementById('detailMainImg');
+            mainImgBox.style.backgroundImage = `url('${imgList[0]}')`;
+            
+            // Vẽ danh sách hàng loạt cụm ô ảnh nhỏ thumbnail phía dưới
+            const thumbsRow = document.getElementById('detailThumbsRow');
+            thumbsRow.innerHTML = imgList.map(imgData => `
+                <div class="detail-thumb-item" onclick="document.getElementById('detailMainImg').style.backgroundImage=\`url('\${imgData}')\`" style="width: 55px; height: 55px; background-image: url('${imgData}'); background-size: cover; background-position: center; border-radius: 6px; border: 2px solid #edf2f7; cursor: pointer; flex-shrink: 0;"></div>
+            `).join('');
+            
+            // Đồng bộ cụm nút hành động tương tác động xuống đáy Popup chi tiết
+            document.getElementById('detailActionsRow').innerHTML = `
+                <button class="btn-buy" onclick="toggleModal('productDetailModal'); openCheckoutForm('${title}', '${price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button>
+                <button class="btn-trade-action" onclick="toggleModal('productDetailModal'); toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button>
+            `;
+            toggleModal('productDetailModal');
+        }
+        // HÀM GỢI Ý TOÀN SÀN DYNAMIC: Tự động gom tên đồ mặc định trên HTML + đồ tự đăng ở LocalStorage để gợi ý
+        function showSearchSuggestions(val) {
+            const box = document.getElementById('searchSuggestionsBox'); if (!box) return;
+            const text = val.trim().toLowerCase(); if (text === '') { box.style.display = 'none'; return; }
+            let dynamicItems = [];
+
+            // 1. Quét đồ có sẵn từ HTML
+            document.querySelectorAll('.product-card h3').forEach(t => {
+                const sec = t.closest('section');
+                if (sec && !dynamicItems.some(i => i.keyword === t.innerText.toLowerCase())) { dynamicItems.push({ keyword: t.innerText.toLowerCase(), cat: sec.id }); }
+            });
+            // 2. Quét đồ lưu trong bộ nhớ tự đăng LocalStorage
+            const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
+            uploads.forEach(up => { if (!dynamicItems.some(i => i.keyword === up.name.toLowerCase())) { dynamicItems.push({ keyword: up.name.toLowerCase(), cat: up.cat || 'fashion' }); } });
+
+            const matches = dynamicItems.filter(item => item.keyword.includes(text));
+            if (matches.length === 0) { box.style.display = 'none'; return; }
+
+            box.innerHTML = matches.map(item => `
+                <div class="suggestion-item" onclick="clickSuggestionItem('${item.keyword}', '${item.cat}')"><i class="fa-solid fa-magnifying-glass" style="font-size:11px; margin-right:8px; color:#a0aec0;"></i> ${item.keyword}</div>
+            `).join(''); box.style.display = 'block';
+        }
+
+        function clickSuggestionItem(keyword, catId) {
+            document.getElementById('navbarSearchInput').value = keyword; document.getElementById('searchSuggestionsBox').style.display = 'none'; showCategory(catId);
+        }
+        // HÀM TÌM KIẾM TOÀN SÀN SIÊU CẤP: Quét sạch sành sanh từ đồ mặc định đến đồ tự đăng của sinh viên
+        function handleNavbarSearch() {
+            const inputEl = document.getElementById('navbarSearchInput'); if (!inputEl) return;
+            const keyword = inputEl.value.trim().toLowerCase(); if (keyword === '') { alert('Nhập từ khóa!'); return; }
+            let foundMatch = false; let targetCategoryPage = '';
+
+            // TẦNG 1: Quét trực tiếp trên các thẻ HTML đang hiển thị ngoài màn hình
+            document.querySelectorAll('.product-card').forEach(card => {
+                const titleEl = card.querySelector('h3');
+                if (titleEl && titleEl.innerText.toLowerCase().includes(keyword)) { foundMatch = true; const sec = card.closest('section'); if (sec) { targetCategoryPage = sec.id; } }
+            });
+            // TẦNG 2: Quét sâu trong kho dữ liệu bộ nhớ tự đăng lưu trữ của sinh viên
+            if (!foundMatch) {
+                const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
+                const matchedUpload = uploads.slice().reverse().find(item => item.name.toLowerCase().includes(keyword));
+                if (matchedUpload) { foundMatch = true; targetCategoryPage = matchedUpload.cat || 'fashion'; }
+            }
+
+            if (foundMatch && targetCategoryPage !== '') { alert(`🎉 Tìm thấy món đồ khớp từ khóa trên toàn sàn!`); showCategory(targetCategoryPage); }
+            else { alert(`Không tìm thấy món đồ nào tên "${inputEl.value}" trên sàn HLTRADE.`); }
+            inputEl.value = '';
+        }
+        let registeredUsers = JSON.parse(localStorage.getItem('hltrade_users')) || [{ name: "Long Anh", phone: "0375408826", pass: "123456" }];
+        window.onload = function() { updateUserStatus(); renderDashboardData(); renderCartDetailData(); }
+
+        function updateUserStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('hltrade_current_user')), statusText = document.getElementById('user-status'), tabDash = document.getElementById('tab-dashboard'), tabLog = document.getElementById('tab-login'), tabReg = document.getElementById('tab-register'), quickChat = document.getElementById('quickChatBtn');
+            if (currentUser && statusText) {
+                statusText.innerHTML = `<span style="color:#e53e3e;"><i class="fa-solid fa-user-check"></i> ${currentUser.name}</span>`;
+                if(tabDash) tabDash.style.display = 'block'; if(tabLog) tabLog.style.display = 'none'; if(tabReg) tabReg.style.display = 'none'; if(quickChat) quickChat.style.display = 'flex'; switchAuthTab('dashboard');
+            } else if (statusText) {
+                statusText.innerHTML = 'Đăng nhập'; if(tabDash) tabDash.style.display = 'none'; if(tabLog) tabLog.style.display = 'block'; if(tabReg) tabReg.style.display = 'block'; if(quickChat) quickChat.style.display = 'none'; switchAuthTab('login');
+            }
+        }
+
+        function handleUserClick() { toggleModal('authModal'); }
+        function logoutAccount() { localStorage.removeItem('hltrade_current_user'); updateUserStatus(); alert('Đã đăng xuất!'); toggleModal('authModal'); }
+        function handlePhoneRegister() {
+            const name = document.getElementById('regName').value, phone = document.getElementById('regPhone').value, pass = document.getElementById('regPassword').value;
+            if (registeredUsers.some(user => user.phone === phone)) { alert('SĐT đã ký!'); return; }
+            registeredUsers.push({ name: name, phone: phone, pass: pass }); localStorage.setItem('hltrade_users', JSON.stringify(registeredUsers)); alert('Đăng ký thành công!'); switchAuthTab('login');
+        }
+        function handlePhoneLogin() {
+            const phone = document.getElementById('loginPhone').value, pass = document.getElementById('loginPassword').value, user = registeredUsers.find(u => u.phone === phone && u.pass === pass);
+            if (user) { localStorage.setItem('hltrade_current_user', JSON.stringify(user)); updateUserStatus(); renderDashboardData(); alert(`Chào mừng ${user.name}!`); } else { alert('Sai tài khoản hoặc mật khẩu!'); }
+        }
+
+        // HÀM GỠ TIN ĐĂNG: Xóa món đồ khỏi LocalStorage bộ nhớ và bốc hơi khỏi giao diện toàn sàn vĩnh viễn [INDEX]
+        function deleteUploadedItem(index, name, catId) {
+            if (confirm(`Bạn có chắc chắn muốn xóa tin đăng món đồ "${name}" không?`)) {
+                let uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [];
+                uploads.splice(index, 1); localStorage.setItem('hltrade_uploaded_items', JSON.stringify(uploads));
+                renderDashboardData();
+                document.querySelectorAll('.product-card').forEach(card => { const titleEl = card.querySelector('h3'); if (titleEl && titleEl.innerText === name) { card.remove(); } });
+                alert(`Đã gỡ bài đăng tin "${name}" thành công!`); if (catId) { showCategory(catId); }
+            }
+        }
+        let tempProduct = { name: '', price: '' };
+        function openCheckoutForm(name, price) {
+            tempProduct.name = name; tempProduct.price = price; const submitBtn = document.getElementById('submitCheckoutBtn');
+            if (name.toLowerCase().includes('phòng') || name.toLowerCase().includes('thuê')) { if (submitBtn) submitBtn.innerText = "Xác Nhận Đặt Thuê"; }
+            else { if (submitBtn) submitBtn.innerText = "Xác Nhận Đặt Mua"; }
+            toggleModal('checkoutModal');
+        }
+        function handleConfirmPurchase() {
+            const cartData = JSON.parse(localStorage.getItem('hltrade_cart_items')) || []; cartData.push({ name: tempProduct.name, price: tempProduct.price, note: document.getElementById('buyerNote').value });
+            localStorage.setItem('hltrade_cart_items', JSON.stringify(cartData)); alert(`Thành công món hàng "${tempProduct.name}"!`); toggleModal('checkoutModal'); document.getElementById('buyerNote').value = ""; renderCartDetailData();
+        }
+        function renderCartDetailData() {
+            const cartData = JSON.parse(localStorage.getItem('hltrade_cart_items')) || [], list = document.getElementById('myCartItemsList'); document.getElementById('cart-count').innerText = cartData.length;
+            if (cartData.length > 0) { list.innerHTML = cartData.map(item => `<div class="dash-item-card" style="border-left:4px solid #e53e3e"><div class="dash-item-info"><strong>${item.name}</strong><span style="color:#e53e3e">${item.price} đ</span><span style="font-size:11px;color:#718096">Lời hẹn gặp: "${item.note}"</span></div></div>`).join(''); } else { list.innerHTML = `<p class="empty-text">Giỏ hàng trống...</p>`; }
+        }
+        function toggleChatWindow() { const win = document.getElementById('chatBoxWindow'); if (win) { win.style.display = win.style.display === 'none' ? 'flex' : 'none'; if (win.style.display === 'flex') { renderCurrentChatMessages(); } } }
+
+        let chatDatabase = {
+            'Hoàng Long': [{ sender: 'them', type: 'text', text: 'Chào bạn, mình đổi tai nghe lấy Áo Blazer của bạn nhé?' }],
+            'Minh Đức': [{ sender: 'them', type: 'text', text: 'Hi bạn! Mình muốn đổi Bộ tạ tay lấy sách của bạn ạ.' }]
+        };
+        let currentPartner = 'Hoàng Long';
+        function switchChatPartner(name) { currentPartner = name; document.getElementById('currentChatName').innerText = 'Đang chat với: ' + name; document.getElementById('partner-Long').classList.toggle('active', name === 'Hoàng Long'); document.getElementById('partner-Duc').classList.toggle('active', name === 'Minh Đức'); renderCurrentChatMessages(); }
+        function renderCurrentChatMessages() {
+            const bodyEl = document.getElementById('chatMessageContent'), messages = chatDatabase[currentPartner] || [];
+            bodyEl.innerHTML = messages.map(msg => { const bubbleClass = msg.sender === 'me' ? 'user-msg' : 'bot-msg'; if (msg.type === 'image') { return `<div class="msg-bubble ${bubbleClass}" style="background:none; padding:0;"><img src="${msg.text}" style="max-width:100%; max-height:150px; border-radius:10px; display:block; border:1px solid #edf2f7;"></div>`; } return `<div class="msg-bubble ${bubbleClass}">${msg.text}</div>`; }).join(''); bodyEl.scrollTop = bodyEl.scrollHeight;
+        }
+        function sendUserChatMessage() {
+            const inputEl = document.getElementById('userChatInput'), bodyEl = document.getElementById('chatMessageContent'), text = inputEl.value.trim(); if (text === '') return;
+            chatDatabase[currentPartner].push({ sender: 'me', type: 'text', text: text }); renderCurrentChatMessages(); inputEl.value = '';
+            setTimeout(() => { chatDatabase[currentPartner].push({ sender: 'them', type: 'text', text: "Oki chốt đơn nhé bạn ơi!" }); renderCurrentChatMessages(); }, 1200);
+        }
+        function sendUserChatImage(input) {
+            const file = input.files; if (!file || file.length === 0) return; const reader = new FileReader();
+            reader.onload = function(e) { chatDatabase[currentPartner].push({ sender: 'me', type: 'image', text: e.target.result }); renderCurrentChatMessages(); }; reader.readAsDataURL(file[0]); input.value = '';
+        }
+
+        function confirmTradeSuccess() {
+            const code = `#BUY-${Math.floor(100000 + Math.random() * 900000)}`, history = JSON.parse(localStorage.getItem('hltrade_history')) || [];
+            history.push({ code: code, partner: currentPartner, time: new Date().toLocaleTimeString('vi-VN') }); localStorage.setItem('hltrade_history', JSON.stringify(history)); alert(`🎉 CHỐT GIAO DỊCH THÀNH CÔNG!\nMã đơn: ${code}`); renderDashboardData(); toggleChatWindow();
+        }
+        function handleSendTradeProposal() { alert(`Đã gửi đề xuất!`); toggleModal('tradeModal'); }
+        
+        function renderDashboardData() {
+            const u = JSON.parse(localStorage.getItem('hltrade_current_user')); if (!u) return; document.getElementById('dash-user-name').innerText = u.name; document.getElementById('dash-user-phone').innerText = u.phone;
+            const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || [], pList = document.getElementById('myUploadedProductsList'); 
+            if (uploads.length > 0) { pList.innerHTML = uploads.map((i, idx) => `<div class="dash-item-card" style="justify-content: space-between;"><div style="display: flex; align-items: center; gap: 10px;"><div class="dash-item-img" style="background-image:url('${Array.isArray(i.img)?i.img[0]:i.img}')"></div><div class="dash-item-info"><strong>${i.name}</strong><span>${i.price} đ</span></div></div><button onclick="deleteUploadedItem(${idx}, '${i.name}', '${i.cat}')" style="background: none; border: none; color: #e53e3e; cursor: pointer; padding: 5px 10px; font-size: 13px; font-weight:700;"><i class="fa-solid fa-trash-can"></i> Xóa</button></div>`).join(''); }
+            else { pList.innerHTML = `<p class="empty-text">Bạn chưa đăng tin món đồ nào...</p>`; }
+            const history = JSON.parse(localStorage.getItem('hltrade_history')) || [], hList = document.getElementById('myTradeHistoryList'); if (history.length > 0) { hList.innerHTML = history.map(i => `<div class="dash-item-card trade-success-card"><div class="dash-item-info"><strong>Mã đơn: ${i.code}</strong><span>Với: ${i.partner}</span></div><span class="status-success-badge">Thành Công</span></div>`).join(''); }
+        }
+
+        // HÀM ĐĂNG BÀI ĐA ẢNH KÈM MÔ TẢ NGƯỜI BÁN CHUẨN REAL-TIME
+        function handleUpload() {
+            const name = document.getElementById('prodName').value, cat = document.getElementById('prodCategory').value, desc = document.getElementById('prodDesc').value, price = parseInt(document.getElementById('prodPrice').value).toLocaleString('vi-VN'), fileInput = document.getElementById('prodImage');
+            if (!fileInput || fileInput.files.length === 0) { alert('Chọn ít nhất 1 ảnh thực tế!'); return; }
+            const files = Array.from(fileInput.files); let imgList = [], readCount = 0;
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgList.push(e.target.result); readCount++;
+                    if (readCount === files.length) {
+                        const imgListStr = imgList.join('|||'); const target = document.querySelector(`#${cat} .product-grid`);
+                        if (target) { target.insertAdjacentHTML('afterbegin', `<div class="product-card"><div class="product-img" onclick="openProductDetail('${name}', '${price}', \`${desc}\`, '${imgListStr}', '${cat}')" style="background-image:url('${imgList[0]}'); cursor:pointer;"></div><div class="product-info"><span class="tag">Cần đổi</span><h3 onclick="openProductDetail('${name}', '${price}', \`${desc}\`, '${imgListStr}', '${cat}')" style="cursor:pointer;">${name}</h3><p class="price">Định giá: ${price} đ</p><div class="card-actions"><button class="btn-buy" onclick="openCheckoutForm('${name}', '${price}')"><i class="fa-solid fa-cart-shopping"></i> Mua thẳng</button><button class="btn-trade-action" onclick="toggleModal('tradeModal')"><i class="fa-solid fa-right-left"></i> Đổi Đồ</button></div></div></div>`); }
+                        const uploads = JSON.parse(localStorage.getItem('hltrade_uploaded_items')) || []; uploads.push({ name: name, price: price, img: imgList[0], imgListStr: imgListStr, desc: desc, cat: cat }); localStorage.setItem('hltrade_uploaded_items', JSON.stringify(uploads));
+                        alert('🎉 ĐĂNG TIN ĐA ẢNH THÀNH CÔNG!'); document.getElementById('prodDesc').value = ""; renderDashboardData(); showCategory(cat); toggleModal('uploadModal');
+                    }
+                }; reader.readAsDataURL(file);
+            });
+        }
+    </script>
+</body>
+</html>
