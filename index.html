@@ -35,7 +35,7 @@
         </div>
         <!-- Thanh tìm kiếm quét toàn sàn và hộp gợi ý chữ nhỏ đổ xuống kiểu Shopee -->
         <div class="nav-search-block" style="position: relative;">
-            <form class="search-form" onsubmit="event.preventDefault(); handleNavbarSearch();">
+           <form class="search-form" onsubmit="event.preventDefault(); handleNavbarSearch();">
                 <input type="text" id="navbarSearchInput" placeholder="Tìm giáo trình, đồ kí túc xá..." class="search-input" oninput="showSearchSuggestions(this.value)" autocomplete="off">
                 <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
@@ -66,7 +66,7 @@
     <main class="container">
         <!-- NỘI DUNG TRANG CHỦ MẶC ĐỊNH -->
         <section id="home-content" class="home-intro-section">
-            <h2 class="main-intro-title">Nền Tảng Trao Đổi Đồ Cũ Sinh Viên Hòa Lạc</h2>
+            <h2 class="main-intro-title">Nền Tảng Trao Đổi Đồ Sinh Viên Hòa Lạc</h2>
             <div class="intro-grid">
                 <div class="intro-box"><div class="intro-icon"><i class="fa-solid fa-camera-retro"></i></div><h3>1. Chụp ảnh bài đăng</h3><p>Nhấp trực tiếp vào ảnh sản phẩm bất kỳ để mở album xem đa ảnh góc cạnh.</p></div>
                 <div class="intro-box"><div class="intro-icon"><i class="fa-solid fa-comments"></i></div><h3>2. Nhắn tin gửi ảnh</h3><p>Mở khung chat để thương lượng trực tiếp và gửi tệp hình ảnh thực tế cho nhau.</p></div>
@@ -481,7 +481,38 @@
                 hList.innerHTML = history.map(i => `<div class="dash-item-card trade-success-card"><div class="dash-item-info"><strong>Mã đơn: ${i.code}</strong><span>Với: ${i.partner}</span></div><span class="status-success-badge">Thành Công</span></div>`).join(''); 
             }
         }
-
     </script>
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    onSnapshot,
+    doc,
+    deleteDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "...",
+    authDomain: "...",
+    projectId: "...",
+    storageBucket: "...",
+    messagingSenderId: "...",
+    appId: "..."
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.db = db;
+window.addDoc = addDoc;
+window.collection = collection;
+window.getDocs = getDocs;
+window.onSnapshot = onSnapshot;
+window.doc = doc;
+window.deleteDoc = deleteDoc;
+</script>
 </body>
 </html>
