@@ -171,3 +171,36 @@ body { background-color: #f4f6f9; color: #1a1a1a; }
 .dash-chat-info strong { font-size: 13px; color: #1a1a1a; }
 .dash-chat-info span { font-size: 11px; color: #718096; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 280px; margin-top: 2px; }
 .chat-status-dot { width: 8px; height: 8px; background-color: #e53e3e; border-radius: 50%; }
+/* ==========================================================================
+   8. ĐOẠN CSS TỐI ƯU GIAO DIỆN HIỂN THỊ MƯỢT MÀ TRÊN ĐIỆN THOẠI (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Navbar chuyển sang xếp dọc để không bị tràn màn hình */
+    .navbar { flex-direction: column; gap: 12px; padding: 15px 20px; }
+    .nav-search-block { width: 100%; max-width: 100%; margin: 10px 0; }
+    .nav-right { width: 100%; justify-content: space-between; gap: 15px; }
+    .user-profile-block { align-items: flex-start; }
+    
+    /* Thu nhỏ chữ Banner chính trên điện thoại */
+    .hero h2 { font-size: 26px; }
+    .hero p { font-size: 13px; }
+    .container { padding: 20px 15px; }
+    
+    /* Lưới sản phẩm tự co giãn thành 2 cột đều nhau như Shopee Mobile */
+    .product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+    .product-img { height: 160px; }
+    .product-info { padding: 10px; }
+    .product-info h3 { font-size: 13px; margin-bottom: 6px; }
+    .price { font-size: 14px; margin-bottom: 10px; }
+    
+    /* Thu nhỏ nút bấm vừa vặn ngón tay chạm */
+    .card-actions { flex-direction: column; gap: 6px; }
+    .btn-buy, .btn-trade-action { padding: 8px; font-size: 11px; width: 100%; }
+    
+    /* Co giãn giao diện cửa sổ chi tiết đa ảnh và Khung Chat đôi */
+    .detail-layout { flex-direction: column; }
+    .chat-box-modal { width: 90% !important; height: 80% !important; bottom: 5%; right: 5%; }
+    .chat-sidebar { width: 80px; }
+    .chat-user-item strong { font-size: 11px; }
+    .chat-user-item p { display: none; } /* Ẩn bớt chữ dòng xem trước trên điện thoại */
+}
