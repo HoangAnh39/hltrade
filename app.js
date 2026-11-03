@@ -1,23 +1,22 @@
-// Lấy danh sách từ Firebase và tự động hiển thị ra màn hình khi có đồ mới
-const sanPhamRef = window.collection(window.db, "products");
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-window.onSnapshot(sanPhamRef, (snapshot) => {
-    const container = document.getElementById('products-container') || document.querySelector('.products-grid');
-    if (!container) return;
-    container.innerHTML = ''; // Xóa danh sách cũ
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBjU6UA0BJSH7A0GoAkLdUh9mmoyow72pI",
+  authDomain: "duanhltrade.firebaseapp.com",
+  databaseURL: "https://duanhltrade-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "duanhltrade",
+  storageBucket: "duanhltrade.firebasestorage.app",
+  messagingSenderId: "1066085226785",
+  appId: "1:1066085226785:web:498f44f51622821aef0660",
+  measurementId: "G-T5LWWCXY56"
+};
 
-    snapshot.forEach((doc) => {
-        const item = doc.data();
-        // Giữ nguyên giao diện HTML/CSS cũ, chỉ truyền biến tên và giá vào
-        const itemHTML = `
-            <div class="product-item">
-                <img class="product-img" src="${item.image || 'https://placeholder.com'}">
-                <div class="product-info">
-                    <div class="product-name">${item.title}</div>
-                    <div class="product-price">${Number(item.price).toLocaleString('vi-VN')} đ</div>
-                </div>
-            </div>
-        `;
-        container.innerHTML += itemHTML;
-    });
-});
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
